@@ -1,2 +1,1 @@
-# uPic
 Photo Contest Platform
