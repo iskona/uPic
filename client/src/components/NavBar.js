@@ -1,4 +1,5 @@
 import React from "react";
+import NavListItem from "./NavListItem";
 
 function Navbar() {
   return (
@@ -13,15 +14,9 @@ function Navbar() {
 
         <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li className="nav-item active">
-              <a className="nav-link" href="/about">About</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/login">Log In</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/signup">Sign Up</a>
-            </li>
+           <NavListItem path="/about" menuLabel="About"/>
+           <NavListItem path="/login" menuLabel="LogIn"/>
+           <NavListItem path="/signup" menuLabel="SignUp"/>
           </ul>
         </div>
       </div>
