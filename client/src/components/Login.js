@@ -8,12 +8,13 @@ function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // API.getUser({
-        //     email: emailRef.current.value,
-        //     password: passwordRef.current.value
-        // })
+        API.ckeckUser({
+            email: emailRef.current.value,
+            password: passwordRef.current.value
+        })
         //    .then(res => );
     }
+
     return (
         <div className="container p-5">
             <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center">
