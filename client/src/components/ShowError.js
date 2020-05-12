@@ -4,7 +4,7 @@ import  Container  from "../components/Container";
 
 function ShowError() {
   return (
-    <Container fluid>
+    <Container>
       {/* <Row>
         <Col size="md-12"> */}
           {/* <Jumbotron> */}

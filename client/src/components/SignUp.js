@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react'
 import API from '../utils/API';
 import ShowError from "./ShowError"
 import FormInput from './FormInput';
+import Title from './Title';
 
 function SignUp() {
     const [showError, setShowError] = useState(false);
@@ -31,30 +32,25 @@ function SignUp() {
     }
     return (
         <div>
-                <div className="container p-5">
-                    <header>
-                        <h2>
-                            Sign up for uPic
-                </h2>
-                    </header>
-                    <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center">
-
-                        <form className="p-5 mx-auto">
-                            <div className="form-group">
-                                <FormInput inputType="text" place_holder="User Name" inputRef={nameRef} />
-                                <FormInput inputType="email" place_holder="Email" inputRef={emailRef} />
-                                <FormInput inputType="password" place_holder="Password" inputRef={passwordRef} />
-                                <FormInput inputType="password" place_holder="Confirm Password" inputRef={password2Ref} />
-                            </div>
+            <div className="container p-5">
+                <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center">
+                    <Title title="Sign up for uPic !!" displaySize="5" />
+                    <form className="p-5 mx-auto">
+                        <div className="form-group">
+                            <FormInput inputType="text" place_holder="User Name" inputRef={nameRef} />
+                            <FormInput inputType="email" place_holder="Email" inputRef={emailRef} />
+                            <FormInput inputType="password" place_holder="Password" inputRef={passwordRef} />
+                            <FormInput inputType="password" place_holder="Confirm Password" inputRef={password2Ref} />
+                        </div>
                         <button type="submit"
                             className="btn btn-primary"
                             onClick={handleSubmit}>
                             Submit
                         </button>
-                        </form>
-                    </div>
-
+                    </form>
                 </div>
+
+            </div>
             {showError && <ShowError />}
         </div>
     )
