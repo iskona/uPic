@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import "./App.css";
 import NavBar from "./components/NavBar"
@@ -11,7 +11,7 @@ function App() {
     <Router>
       <div className="App">
         <NavBar />
-        <Route exact path="/main" component={MainContent} />
+        <Route exact path={["/","/main"]} component={MainContent} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
 

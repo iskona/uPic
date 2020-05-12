@@ -12,7 +12,6 @@ function Login() {
             email: emailRef.current.value,
             password: passwordRef.current.value
         })
-        //    .then(res => );
     }
 
     return (
