@@ -1,5 +1,7 @@
 import React, { useRef } from 'react'
 import API from '../utils/API';
+import FormInput from './FormInput';
+import Title from './Title';
 
 function Login() {
 
@@ -12,31 +14,22 @@ function Login() {
             email: emailRef.current.value,
             password: passwordRef.current.value
         })
-        //    .then(res => );
     }
 
     return (
         <div className="container p-5">
             <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center">
-                <h2>
-                    Log in to uPic
-                </h2>
+            <Title title="Login for uPic !!" displaySize="5"/>
                 <form className="p-5 mx-auto">
                     <div className="form-group">
-                        <input type="email"
-                            className="form-control mb-1"
-                            placeholder="Email address"
-                            ref={emailRef} />
-                        <input type="password"
-                            className="form-control mb-1"
-                            placeholder="Password"
-                            ref={passwordRef} />
+                        <FormInput inputType="email" place_holder="Email address" inputRef={emailRef} />
+                        <FormInput inputType="password" place_holder="Password" inputRef={passwordRef} />
                     </div>
                     <button type="submit"
                         className="btn btn-primary"
                         onClick={handleSubmit}>
                         Login
-                 </button>
+                    </button>
                     <hr />
                     <h6>
                         Not a uPic member? <a href="/signup">Sign up here</a>

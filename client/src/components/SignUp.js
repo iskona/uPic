@@ -1,8 +1,11 @@
-import React,{useRef} from 'react'
+import React, { useState, useRef } from 'react'
 import API from '../utils/API';
+import ShowError from "./ShowError"
+import FormInput from './FormInput';
+import Title from './Title';
 
 function SignUp() {
-
+    const [showError, setShowError] = useState(false);
     const nameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -16,47 +19,40 @@ function SignUp() {
             password: passwordRef.current.value,
             password2: password2Ref.current.value
         })
-        //    .then(res => );
+            .then(res => {
+                console.log(res);
+                if (res) {
+                    console.log("Show Profile page");
+                }
+            })
+            .catch(err => {
+                console.log(err.message);
+                setShowError(true);
+            })
     }
     return (
-        <div className="container p-5">
-            <header>
-                <h2>
-                Sign up for uPic
-                </h2>
-            </header>
-            <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center">
-
-            <form className="p-5 mx-auto">
-                <div className="form-group">
-                    <input type="text" 
-                           className="form-control mb-1" 
-                            placeholder="User Name"
-                            ref={nameRef} />
-                    <input type="email" 
-                           className="form-control mb-1" 
-                            placeholder="Email"
-                            ref={emailRef}  />
-                    <input type="password"
-                           className="form-control mb-1" 
-                            placeholder="Password" 
-                            ref={passwordRef}/>
-                    <input type="password" 
-                           className="form-control mb-1" 
-                            placeholder="Confirm Password" 
-                            ref={password2Ref}/>
+        <div>
+            <div className="container p-5">
+                <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center">
+                    <Title title="Sign up for uPic !!" displaySize="5" />
+                    <form className="p-5 mx-auto">
+                        <div className="form-group">
+                            <FormInput inputType="text" place_holder="User Name" inputRef={nameRef} />
+                            <FormInput inputType="email" place_holder="Email" inputRef={emailRef} />
+                            <FormInput inputType="password" place_holder="Password" inputRef={passwordRef} />
+                            <FormInput inputType="password" place_holder="Confirm Password" inputRef={password2Ref} />
+                        </div>
+                        <button type="submit"
+                            className="btn btn-primary"
+                            onClick={handleSubmit}>
+                            Submit
+                        </button>
+                    </form>
                 </div>
 
-                <button type="submit"
-                        className="btn btn-primary"
-                        onClick={handleSubmit}>
-                        Submit
-                 </button>
-            </form>
             </div>
-           
+            {showError && <ShowError />}
         </div>
     )
 }
-
 export default SignUp

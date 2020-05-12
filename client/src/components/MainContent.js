@@ -1,15 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react'
+import SignUp from './SignUp';
+import Title from './Title';
 
 function MainContent() {
-    return (
-        <div className="jumbotron m-5  mx-auto bg-info">
-         <h1 class="display-4">Find your Inspiration !!</h1>
-         <h2>Join uPic Community to start a new Photo Contest or to get involved !!</h2>
-         <p className="lead">
-            <a className="btn btn-primary btn-lg" href="#" role="button">Start for Free</a>
+  const [isMainPage, setIsMainPage] = useState(true);
+  const [showSignUp, setshowSignUp] = useState(false);
+  const showSignUpPage = () => {
+    setIsMainPage(false);
+    setshowSignUp(true);
+  }
+  return (
+    <div>
+      {isMainPage && 
+      <div className="jumbotron m-5 container mx-auto" style={{color: "rgb(233,236,239)"}}>
+        <Title title="Find your Inspiration !!" displaySize="3"/>
+        <Title title="Join uPic Community to start a new Photo Contest or to get involved !!" displaySize="7"/>
+        <p className="lead">
+          <button className="btn btn-secondary btn-lg"
+            onClick={showSignUpPage}>
+            Start for Free
+            </button>
         </p>
-      </div>
-    )
+      </div>}
+      {showSignUp && <SignUp />}
+    </div>
+
+  )
 }
 
 export default MainContent
