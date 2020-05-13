@@ -8,6 +8,7 @@ const validateSignupInputData = require("../../validations/signup");
 const validateLoginInputData = require("../../validations/login");
 //Load User Model
 const User = require("../../models/User");
+const Contest = require("../../models/Contest");
 
 //set up routes
 router.post("/signup", (req, res) => {
@@ -105,6 +106,15 @@ router.post("/login", (req,res )=> {
                    })
         })
   
+})
+
+router.get("/contests", (req, res) => {
+    Contest.find({})
+    .then(data => {        
+        console.log(data);
+        res.json(data);
+    })
+    .catch(err => console.log(err));
 })
 
 module.exports = router;
