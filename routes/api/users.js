@@ -27,7 +27,9 @@ router.post("/signup", (req, res) => {
             )
             .then(user => {
                 if(user){
-                    return res.status(400).json({email : "Email Already exists "});
+                    console.log(user)
+                    return res.status(400).send({email:"Email Already exists "});
+                    
                 }else {
                     const newUser = new User({
                         name: req.body.name,
