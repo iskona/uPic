@@ -10,10 +10,12 @@ function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        API.ckeckUser({
+        API.checkUser({
             email: emailRef.current.value,
             password: passwordRef.current.value
-        })
+        });
+        emailRef.current.value = "";
+        passwordRef.current.value = "";
     }
 
     return (

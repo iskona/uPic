@@ -1,16 +1,15 @@
 import axios from "axios";
 
 export default {
-    saveUser: function(userDetails){
+    saveUser: function (userDetails) {
         console.log(userDetails);
-       return axios.post("/api/users/signup",userDetails);
-        
+        return axios.post("/api/users/signup", userDetails);
     },
-    ckeckUser: function(userDetails) {
+    checkUser: function (userDetails) {
         console.log(userDetails);
         return axios.post("/api/users/login", userDetails);
     },
-    getContests: function() {
+    getContests: function () {
         return axios.get("/api/users/contests");
     }
-}
+};

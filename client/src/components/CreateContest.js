@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import API from "../utils/API";
 
-function Contest() {
+function CreateContest() {
     const [contests, setContests] = useState([]);
     useEffect(() => {
         API.getContests()
@@ -40,4 +40,4 @@ function Contest() {
     )
 }
 
-export default Contest;
+export default CreateContest;
