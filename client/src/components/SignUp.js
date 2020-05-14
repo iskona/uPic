@@ -5,7 +5,7 @@ import FormInput from './FormInput';
 import Title from './Title';
 
 function SignUp() {
-    const [showError, setShowError] = useState(false);
+    const [showError, setShowError] = useState("");
     const nameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -22,12 +22,15 @@ function SignUp() {
             .then(res => {
                 console.log(res);
                 if (res) {
+                    setShowError("");
                     console.log("Show Profile page");
                 }
             })
             .catch(err => {
-                console.log(err.message);
-                setShowError(true);
+                console.log("error from catch")
+                err.response && err.response.data && setShowError(err.response.data.email)
+                console.log(err.response.data);
+               // setShowError(true);
             })
     }
     return (
@@ -51,7 +54,7 @@ function SignUp() {
                 </div>
 
             </div>
-            {showError && <ShowError />}
+            {showError && <ShowError message={showError}/>}
         </div>
     )
 }

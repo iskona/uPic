@@ -3,9 +3,10 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const mongoose = require("mongoose");
 const passport = require("passport");
-const users = require("./routes/api/users");
+const routes = require("./routes");
 
 const bodyParser = require("body-parser");
+const upload = require("./routes/api/image-upload");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -37,7 +38,8 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 
 //Routes 
-app.use("/api/users", users)
+app.use(routes);
+//app.use("api/upload",upload);
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
