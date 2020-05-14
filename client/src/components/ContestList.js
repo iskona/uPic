@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import API from "../utils/API";
+import Title from './Title';
 
 function CreateContest() {
     const [contests, setContests] = useState([]);
@@ -16,8 +17,8 @@ function CreateContest() {
     return (
         <div className="container p-5">
             <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center">
-                <h2>Photo Contests List</h2>
-            </div>
+            <Title title="Contests" displaySize="4"/>
+           
             {contests.length ? (
                 <div className="list-overflow-container">
                     <ul className="list-group">
@@ -33,9 +34,10 @@ function CreateContest() {
                     </ul>
                 </div>
             ) : (
-                    <h3>No Results to Display</h3>
+                <Title title="No Results to Display !!" displaySize="6"/>
                 )
             }
+             </div>
         </div >
     )
 }

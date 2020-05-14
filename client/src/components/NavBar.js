@@ -17,7 +17,6 @@ function Navbar() {
             <NavListItem path="/about" menuLabel="About"/>
             <NavListItem path="/login" menuLabel="LogIn"/>
             <NavListItem path="/signup" menuLabel="SignUp"/>
-            <NavListItem path="/upload" menuLabel="Upload" />
           </ul>
         </div>
       </div>

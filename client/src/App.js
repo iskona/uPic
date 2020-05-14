@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import MainContent from "./components/MainContent";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
-import CreateContest from "./components/CreateContest";
+import CreateContest from "./components/ContestList";
 
 function App() {
   return (

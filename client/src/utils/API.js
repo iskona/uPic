@@ -10,6 +10,6 @@ export default {
         return axios.post("/api/users/login", userDetails);
     },
     getContests: function () {
-        return axios.get("/api/users/contests");
+        return axios.get("/api/contests");
     }
 };
