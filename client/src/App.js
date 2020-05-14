@@ -5,7 +5,7 @@ import NavBar from "./components/NavBar";
 import MainContent from "./components/MainContent";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
-import CreateContest from "./components/ContestList";
+import ContestList from "./components/ContestList";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route exact path={["/", "/main"]} component={MainContent} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
-        <Route exact path="/about" component={CreateContest} />
+        <Route exact path="/about" component={ContestList} />
 
       </div>
     </Router>
