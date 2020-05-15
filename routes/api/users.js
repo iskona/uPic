@@ -1,4 +1,5 @@
 const router = require("express").Router();
+var passport = require("../../config/passport");
 
 //Load User Controller
 const userController = require("../../controllers/userController");
@@ -13,7 +14,10 @@ router
 //equivalent to "/api/users/login"
 router
     .route("/login")
-    .post(userController.loginUser);
+    .post(passport.authenticate("local"), userController.loginUser);
 
+router
+    .route("/personalAccount")
+    .get(userController.getUserData);
 
 module.exports = router;

@@ -1,0 +1,30 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap');
+
+.accountNavBar {
+
+    background-color: whitesmoke;
+    width:100%;
+    border-style: outset;
+  
+}
+
+.headerNav li {
+    padding-left:50px;
+    padding-bottom :20px;
+    margin-left: 10px;
+    cursor:pointer;
+   width:750px;
+   margin:0 auto;
+   font: 15px 'opensans-bold', sans-serif;
+  
+}
+.personalContent{
+   width:750px;
+   margin:0 auto;
+   margin-top :50px;
+   
+}
+.accountNavBar li{
+    margin-top:15px;
+}

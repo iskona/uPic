@@ -1,0 +1,30 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@600&display=swap');
+.banner {
+    display: inline-block;
+    
+    vertical-align: middle;
+    margin: 0 auto;
+    width:100%;
+    padding-bottom: 30px;
+    text-align: center;
+ }
+
+ .banner h1{
+    text-align :left ;
+    margin-top:140px;
+    width: calc(100% - 8px - 8px);
+    display: block;
+    margin-left: 40px;
+    margin-right: 8px;
+  
+    /* margin-left: 1px; */
+    font-family: 'Inconsolata', monospace;
+    color: black;
+ }
+ .joiningText {
+ float :left;
+    color:black;
+    margin-left:40px;
+ }
