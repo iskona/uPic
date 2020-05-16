@@ -3,6 +3,7 @@ import SignUp from './SignUp';
 import Title from './Title';
 
 function MainContent() {
+  
   const [isMainPage, setIsMainPage] = useState(true);
   const [showSignUp, setshowSignUp] = useState(false);
   const showSignUpPage = () => {
