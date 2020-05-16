@@ -1,14 +1,20 @@
 const db = require("../models");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const keys = require("../config/keys");
+
 
 //Load input Validation
 const validateSignupInputData = require("../validations/signup");
 const validateLoginInputData = require("../validations/login");
 
 module.exports = {
-    createUser : function(req,res){
+    getUserData: (req, res, next) => {
+        console.log(req.user);
+        if (req.user) {
+          return res.json({ user: req.user });
+        } else {
+          return res.json({ user: null });
+        }
+      },
+    createUser: function (req, res) {
         console.log(req.body);
         const { errors, isValid } = validateSignupInputData(req.body);
         console.log("errors are " + errors)
@@ -19,88 +25,34 @@ module.exports = {
         }
         //checks if there is any user with the same email address
         db.User
-        .findOne(
-            {
-                email: req.body.email
-            }
-        )
-        .then(user => {
-            if(user){
-                console.log(user)
-                return res.status(400).send({email:"Email Already exists "});
-                
-            }else {
-                const newUser = new User({
-                    name: req.body.name,
-                    email: req.body.email,
-                    password : req.body.password
-                });
+            .findOne(
+                {
+                    email: req.body.email
+                }
+            )
+            .then(user => {
+                if (user) {
+                    console.log(user)
+                    return res.status(400).send({ email: "Email Already exists " });
 
-            //Hash password before saving to the database
-            bcrypt.genSalt(10, (err, salt) => {
-                bcrypt.hash(newUser.password, salt, (err, hash) => {
-                    if (err) throw err;
-                    newUser.password = hash;
-                    //saving the new User to the database
+                } else {
+                    const newUser = new User({
+                        name: req.body.name,
+                        email: req.body.email,
+                        password: req.body.password
+                    });
                     newUser.save()
                         .then(user => res.json(user))
                         .catch(err => console.log(err));
-                })
-            })
-        }
-    });
+
+
+                }
+            });
     },
-    loginUser : function(req,res){
-          //form validation
-    const { errors, isValid } = validateLoginInputData(req.body);
-
-    //check validation
-    if (!isValid) {
-        //return if the provided inputs are not valid
-        return res.status(400).json(errors);
-    }
-    //if valid inputs are provided
-    const email = req.body.email;
-    const password = req.body.password;
-
-    //Find this user from the database by email
-    User.findOne({ email })
-        .then(user => {
-            //checking if the user exists
-            if (!user) {
-                return res.status(404).json({ emailNotFound: "Email Not Found " });
-            }
-            //check password is correct or not
-            bcrypt.compare(password, user.password)
-                .then(isMatch => {
-                    if (isMatch) {
-                        //User matched 
-                        //create JWT payload
-                        const payload = {
-                            id: user.id,
-                            name: user.name
-                        }
-
-                        //Sign token
-                        jwt.sign(
-                            payload,
-                            keys.secretOrKey,
-                            {
-                                expiresIn: 31556926
-                            },
-                            (err, token) => {
-                                res.json({
-                                    success: true,
-                                    token: "Bearer " + token
-                                })
-                            }
-                        )
-                    } else {
-                        return res
-                            .status(400)
-                            .json({ passwordincorrect: "Password is incorrect" });
-                    }
-                })
-        });
+    loginUser: function (req, res) {
+            res.json({
+              email: req.user.email,
+              id: req.user.id})
+    
     }
 }

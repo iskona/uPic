@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+ *{
+    box-sizing: border-box;
+ }
+.Container{
+    background-color: white;
+    width: 1080px;
+    margin: auto;
+    padding-bottom: 100px;
+    padding-top: 120px
+
+}
+.feed{
+    position: relative;
+    height: 10418.2px;
+}
+.cardDiv{
+
+    float: left;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    background: #fff;
+    width: 420px;
+    margin-top: 0;
+    height: auto;
+    /* background-color: red; */
+    position: absolute;
+    -webkit-transition: box-shadow .2s;
+    transition: box-shadow .2s;
+    border-radius: 4px;
+    box-shadow: 0 16px 32px 0 rgba(0,0,0,.1);
+}
+
+.activity-card-Header {
+    display: inline-block;
+    max-width: 420px;
+    width: 100%;
+    height: 64px;
+    padding: 16px;
+    vertical-align: middle;
+    position: relative;
+    background-color:#D8BFD8;
+}
+.cardDiv h4{width: auto;
+    font-family: 'Courgette', cursive;
+max-width: 80%;
+margin-top: 0;
+margin-left: 10px;
+float: left;
+line-height: 12px;
+height: 32px;}
+
+.pic{
+    width: 420px;
+    left: 0;
+}

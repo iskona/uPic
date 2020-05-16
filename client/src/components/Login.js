@@ -1,10 +1,9 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import API from '../utils/API';
-import FormInput from './FormInput';
-import Title from './Title';
+import {Redirect} from "react-router-dom";
 
 function Login() {
-
+    const[loggedIn, setloggedIn] = useState(false);
     const emailRef = useRef();
     const passwordRef = useRef();
 
@@ -14,41 +13,49 @@ function Login() {
             email: emailRef.current.value,
             password: passwordRef.current.value
         })
-        .then(res => {
-            console.log(res);
-          
-        })
-        .catch(err => {
-            console.log("error from catch")
-            // err.response && err.response.data && setShowError(err.response.data.email)
-            console.log(err.response.data);
-           // setShowError(true);
-        })
-        emailRef.current.value = "";
-        passwordRef.current.value = "";
+        .then(result =>{
+            console.log(result.data);
+            setloggedIn(true);
+        });
     }
-
     return (
-        <div className="container p-5">
+        <div>
+            {!loggedIn &&
+            <div className="container p-5">
             <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center">
-            <Title title="Login for uPic !!" displaySize="5"/>
+                <h2>
+                    Log in to uPic
+                </h2>
                 <form className="p-5 mx-auto">
                     <div className="form-group">
-                        <FormInput inputType="email" place_holder="Email address" inputRef={emailRef} />
-                        <FormInput inputType="password" place_holder="Password" inputRef={passwordRef} />
+                        <input type="email"
+                            className="form-control mb-1"
+                            placeholder="Email address"
+                            ref={emailRef} />
+                        <input type="password"
+                            className="form-control mb-1"
+                            placeholder="Password"
+                            ref={passwordRef} />
                     </div>
                     <button type="submit"
                         className="btn btn-primary"
                         onClick={handleSubmit}>
                         Login
-                    </button>
+                 </button>
                     <hr />
                     <h6>
                         Not a uPic member? <a href="/signup">Sign up here</a>
                     </h6>
                 </form>
             </div>
+        </div>}
+        {loggedIn && ( <Redirect to={{
+            pathname: '/profile',
+            state: {email : `${loggedIn.user}` }
+        }}
+/>)}
         </div>
+        
     )
 }
 

@@ -2,11 +2,12 @@ const express = require("express");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const mongoose = require("mongoose");
-const passport = require("passport");
-const routes = require("./routes");
+var session = require("express-session");
+// Requiring passport as we've configured it
+var passport = require("./config/passport");
+const users = require("./routes/api/users");
 
 const bodyParser = require("body-parser");
-const upload = require("./routes/api/image-upload");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -30,9 +31,11 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/photocontestdb"
   .catch(err => console.log(err));
 
 //Passport middleware 
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
+app.use(passport.session());
 //passport Config
-require("./config/passport")(passport);
+//require("./config/passport")(passport);
 
 //Routes 
 app.use("/api/image-upload",upload);
