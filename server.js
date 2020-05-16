@@ -5,8 +5,9 @@ const mongoose = require("mongoose");
 var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
-const users = require("./routes/api/users");
-
+// const users = require("./routes/api/users");
+const upload = require("./routes/api/image-upload");
+const routes = require("./routes");
 const bodyParser = require("body-parser");
 
 // Define middleware here
