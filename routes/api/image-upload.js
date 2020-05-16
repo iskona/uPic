@@ -9,9 +9,12 @@ require('dotenv').config();
 
 // PROFILE IMAGE STORING STARTS
 const s3 = new aws.S3({
-    accessKeyId: process.env.AWSAccessKeyId,
+    accessKeyId:process.env.AWSAccessKeyId,
     secretAccessKey: process.env.AWSSecretKey,
     Bucket: process.env.Bucket
+    // accessKeyId:'AKIAJ4NYYLKYJPDBVAQA',
+    // secretAccessKey:'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',
+    // Bucket: 'upicapp2'
 });
 
 const profileImgUpload = multer({
@@ -52,7 +55,8 @@ function checkFileType(file, cb) {
  * @desc Upload post image
  * @access public
  */
-router.post('/profile-img-upload', (req, res) => {
+router.post('/img-upload', (req, res) => {
+    console.log("@@@@@@@@@@@@@@@@@@@@@@@@@");
     profileImgUpload(req, res, (error) => {
         console.log('requestOkokok', req.file);
         console.log('error', error);
@@ -72,6 +76,11 @@ router.post('/profile-img-upload', (req, res) => {
                     image: imageName,
                     location: imageLocation
                 });
+                    const imgResponse = {
+                                        image: imageName,
+                                        location: imageLocation
+                                    }
+                res.json(imgResponse);
             }
         }
     });

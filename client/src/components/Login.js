@@ -13,7 +13,17 @@ function Login() {
         API.checkUser({
             email: emailRef.current.value,
             password: passwordRef.current.value
-        });
+        })
+        .then(res => {
+            console.log(res);
+          
+        })
+        .catch(err => {
+            console.log("error from catch")
+            // err.response && err.response.data && setShowError(err.response.data.email)
+            console.log(err.response.data);
+           // setShowError(true);
+        })
         emailRef.current.value = "";
         passwordRef.current.value = "";
     }

@@ -68,7 +68,7 @@ module.exports = {
         .then(user => {
             //checking if the user exists
             if (!user) {
-                return resizeBy.status(404).json({ emailNotFound: "Email Not Found " });
+                return res.status(404).json({ emailNotFound: "Email Not Found " });
             }
             //check password is correct or not
             bcrypt.compare(password, user.password)

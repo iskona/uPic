@@ -24,10 +24,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-// Send every other request to the React app Define any API routes before this runs
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "./client/build/index.html"));
-// });
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/photocontestdb", { useNewUrlParser: true })
   .then(() => console.log("Mongo Db successfully connected "))
   .catch(err => console.log(err));
@@ -38,9 +35,13 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 
 //Routes 
+app.use("/api/image-upload",upload);
 app.use(routes);
-//app.use("api/upload",upload);
 
+// Send every other request to the React app Define any API routes before this runs
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });

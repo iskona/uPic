@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import API from "../utils/API";
 import Title from './Title';
+import ShowContestPage from "./ShowContestPage";
 
 function ContestList() {
     const [contests, setContests] = useState([]);
+    const [eachContest, setEachContest] = useState({});
+    const [viewClicked, setViewClicked ] = useState(false);
+
     useEffect(() => {
         API.getContests()
             .then(res => {
@@ -13,10 +17,19 @@ function ContestList() {
             .catch(err => console.log(err))
     }, [])
 
+    const contestDetails = (contest) => {
+      console.log(contest);
+      setEachContest(contest);
+      setViewClicked(true);
+    }
+
+    const backToContest = () => {
+        setViewClicked(false);
+    }
 
     return (
         <div className="container p-5">
-            <div className="jumbotron mx-auto justify-content-center">
+         {!viewClicked &&   <div className="jumbotron mx-auto justify-content-center">
                 <Title title="Photo Contest List" displaySize="5" />
                 <br />
                 {contests.length ? (
@@ -30,7 +43,14 @@ function ContestList() {
                                             <p className="card-text">{contest.description}</p>
                                         </div>
                                         <div className="card-footer">
-                                            <a href="/about" className="btn btn-primary">View</a>
+                                            <a href="/about" 
+                                               className="btn btn-primary"
+                                               onClick={(e) => {
+                                                                e.preventDefault();
+                                                                contestDetails(contest);
+                                                                }}>
+                                                View
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -41,7 +61,8 @@ function ContestList() {
                         <h3>No Results to Display</h3>
                     )
                 }
-            </div>
+            </div>}
+            {viewClicked && <ShowContestPage backToContest={backToContest} contestData={eachContest}/>}
         </div>
     )
 }
