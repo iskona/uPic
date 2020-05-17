@@ -17,6 +17,7 @@ function App() {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/contests" component={ContestList} />
+        <Route exact path="/about" component={MainContent} />
         <Route exact path = "/profile"  component = {Profile} />
         {/* <Route exact path = "/personalAccount"  component = {Account} /> */}
       </div>
