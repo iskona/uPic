@@ -6,7 +6,7 @@ var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
 // const users = require("./routes/api/users");
-const upload = require("./routes/api/image-upload");
+const upload = require("./routes/api/images");
 const routes = require("./routes");
 const bodyParser = require("body-parser");
 
@@ -39,7 +39,7 @@ app.use(passport.session());
 //require("./config/passport")(passport);
 
 //Routes 
-app.use("/api/image-upload",upload);
+app.use("/api/images",upload);
 app.use(routes);
 
 // Send every other request to the React app Define any API routes before this runs

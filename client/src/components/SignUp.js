@@ -27,6 +27,7 @@ function SignUp() {
         })
           .then(result =>{
             console.log(result.data);
+            localStorage.setItem("email",result.data.email);
             setloggedIn({
                 signedin  : true,
                 user  : result.data.email

@@ -40,7 +40,7 @@ function ContestList() {
                                     <div className="card h-100 border-secondary" style={{ "maxWidth": "18rem" }}>
                                         <div className="card-body">
                                             <h5 className="card-title">{contest.title}</h5>
-                                            <p className="card-text">{contest.description}</p>
+                                            <p className="card-text ">{contest.description}</p>
                                         </div>
                                         <div className="card-footer">
                                             <a href="/about" 

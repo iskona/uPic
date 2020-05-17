@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import $ from 'jquery';
+import API from '../utils/API';
 
 class UploadImage extends Component {
 	constructor(props) {
@@ -20,10 +21,13 @@ class UploadImage extends Component {
 
 	singleFileUploadHandler = (event) => {
 		const data = new FormData();
+		console.log("--- contest id ---"+this.props.contestid);
 		// If file selected
 		if (this.state.selectedFile) {
-			data.append('profileImage', this.state.selectedFile, this.state.selectedFile.name);
-			axios.post('/api/image-upload/img-upload', data, {
+			data.append('contestImage', this.state.selectedFile, this.state.selectedFile.name);
+
+			console.log("data being sent "+data);
+			axios.post('/api/images/img-upload', data, {
 				headers: {
 					'accept': 'application/json',
 					'Accept-Language': 'en-US,en;q=0.8',
@@ -42,10 +46,19 @@ class UploadImage extends Component {
 							}
 						} else {
 							// Success
-							let fileName = response.data;
-							console.log('fileName', fileName);
 							this.setState({uploaded : true})
 							this.ocShowAlert('File Uploaded', '#008000');
+							const imageDetails = {
+								owner:localStorage.getItem("email"), //who uploaded the picture
+								contestId:this.props.contestid,//In which contest
+								location:response.data.location,//amazon s3 location
+							}
+							console.log(imageDetails)
+							API.saveImageDetails(imageDetails)
+							.then(res => {
+								console.log(res);
+							})
+							.catch(err => console.log(err))
 						}
 					}
 				}).catch((error) => {

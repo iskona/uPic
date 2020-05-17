@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const userRoutes = require("./users");
 const contestRoutes = require("./contests");
-const uploadRoutes = require("./image-upload");
+const uploadRoutes = require("./images");
 
 //users routes
 router.use("/users",userRoutes);

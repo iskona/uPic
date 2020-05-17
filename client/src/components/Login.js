@@ -14,7 +14,8 @@ function Login() {
             password: passwordRef.current.value
         })
         .then(result =>{
-            console.log(result.data);
+            console.log(result.data.email);
+            localStorage.setItem("email",result.data.email);
             setloggedIn(true);
         });
     }

@@ -15,9 +15,14 @@ const ImageSchema = new Schema({
         type:String,
         required: true
     },
+    graded:
+    {
+        type:Boolean,
+        default:false
+    },
     rating:{
         type:Number,
-        required: true
+        default:0
     }
     /*
     owner
