@@ -1,0 +1,52 @@
+.personalDetailsDiv{
+    width:870px;
+    margin:0 auto;
+    border-style: outset;
+    height:600px;
+    margin-top :50px;
+}
+.description,.nameDiv,.galleryDiv{
+
+    border-bottom: 1px solid #e3e3e3;
+    margin:0 auto;
+    text-align:left;
+    margin-top:10px; 
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    max-height: 260px;
+    overflow: hidden;
+    position: relative;
+}
+.descriptionBox{
+    margin-top:30px;
+    margin-bottom:20px;
+    
+ 
+    height:100%;
+}
+button{
+    float :right;
+    border:none;
+    background:none;
+    size:50px;
+}
+textarea{
+    width: 60%;
+    margin:0 auto;
+    border-radius: 5px;
+}
+.infoFormSection{
+    margin : 0 auto;
+}
+.saveButton{
+    background-color: #2E8B57;
+    padding:8px 15px;
+    color:white;
+    margin-top:4px;
+    border-radius: 8px;
+
+}
+
+

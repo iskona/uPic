@@ -5,7 +5,6 @@ const mongoose = require("mongoose");
 var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
-// const users = require("./routes/api/users");
 const upload = require("./routes/api/images");
 const routes = require("./routes");
 const bodyParser = require("body-parser");
@@ -41,6 +40,7 @@ app.use(passport.session());
 //Routes 
 app.use("/api/images",upload);
 app.use(routes);
+// app.use("/", routes)
 
 // Send every other request to the React app Define any API routes before this runs
 app.get("*", (req, res) => {
