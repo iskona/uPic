@@ -22,8 +22,8 @@ function App() {
         <Route exact path = "/profile"  component = {Profile} />
         <Route exact path = "/personalAccount"  component = {Account} />
         <Route exact path = "/hostevents"  component = {ContestForm} />
-        <Route exact path = "/events"  component = {ContestList} />
-        
+        <Route exact path = "/contests"  component = {ContestList} />
+
       </div>
     </Router>
   );

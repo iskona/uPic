@@ -5,7 +5,6 @@ module.exports = {
     findAll: function (req, res) {
         db.Contest.find({})
             .then(data => {
-                console.log(data);
                 res.json(data);
             })
             .catch(err => console.log(err));
