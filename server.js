@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
-const users = require("./routes/api/users");
+const routes = require("./routes");
 
 const bodyParser = require("body-parser");
 
@@ -41,7 +41,7 @@ app.use(passport.session());
 //require("./config/passport")(passport);
 
 //Routes 
-app.use("/api/users", users)
+app.use("/", routes)
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

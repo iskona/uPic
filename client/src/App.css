@@ -13,7 +13,9 @@
   padding: 20px;
   color: white;
 }
-
+.homePageButton{
+  margin:0 auto;
+}
 .App-intro {
   font-size: large;
 }
@@ -23,9 +25,9 @@
   to { transform: rotate(360deg); }
 }
 
-.App {
+/* .App {
   background-image: url("./tree.jpg");
   background-position: center;
   background-repeat: no-repeat; 
   background-size: cover;
-}
+} */
