@@ -20,6 +20,10 @@ const UserSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    description: {
+        type: String,
+        required: false
     }
 })
 UserSchema.methods = {
