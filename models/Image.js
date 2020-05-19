@@ -11,7 +11,11 @@ const ImageSchema = new Schema({
         type:String,
         required: true
     },
-    location:{
+    imageUrl:{
+        type:String,
+        required: true
+    },
+    thumbnailUrl:{
         type:String,
         required: true
     },

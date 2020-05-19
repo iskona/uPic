@@ -11,22 +11,21 @@ const s3 = new aws.S3({
     secretAccessKey: process.env.AWSSecretKey,
     Bucket: process.env.Bucket
 });
+/**to remove */
 
-const profileImgUpload = multer({
-    storage: multerS3({
-        s3: s3,
-        bucket: 'upicapp2',
-        acl: 'public-read',
-        key: function (req, file, cb) {
-            cb(null, path.basename(file.originalname, path.extname(file.originalname)) + '-' + Date.now() + path.extname(file.originalname))
-        }
-    }),
-    limits: { fileSize: 15000000 }, // In bytes: 2000000 bytes = 2 MB
-    fileFilter: function (req, file, cb) {
-        checkFileType(file, cb);
+/**to remove */
+
+// const upload = multer({ storage: storage, fileFilter: fileFilter });
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads');
+    },
+    filename: (req, file, cb) => {
+        console.log(file);
+        cb(null, Date.now() + path.extname(file.originalname));
     }
-}).single('contestImage');
-
+});
 /**
 * Check File Type
 * @param file
@@ -45,6 +44,13 @@ function checkFileType(file, cb) {
         cb('Error: Images Only!');
     }
 }
+const imageUpload = multer({
+    storage: storage,
+    limits: { fileSize: 15000000 }, // In bytes: 2000000 bytes = 2 MB
+    fileFilter: function (req, file, cb) {
+        checkFileType(file, cb);
+    }
+});
 
 //defining methods for the imagesController
 module.exports = {
@@ -52,7 +58,7 @@ module.exports = {
     uploadImage: function ( req, res, next){
         console.log("@@@@@@@@@@@@@@@@@@@@@@@@@");
         console.log(req)
-        profileImgUpload(req, res, (error) => {
+        imageUpload(req, res, (error) => {
             console.log("***************************************************************")
             console.log("user is "+req)
             console.log('requestOkokok', req.file);

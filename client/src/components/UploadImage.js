@@ -35,6 +35,8 @@ class UploadImage extends Component {
 				}
 			})
 				.then((response) => {
+					console.log(response.status)
+					console.log(response.data)
 					if (200 === response.status) {
 						// If file size is larger than expected.
 						if (response.data.error) {
@@ -45,13 +47,16 @@ class UploadImage extends Component {
 								this.ocShowAlert(response.data.error, 'red');
 							}
 						} else {
+							console.log('else block '+response.status)
 							// Success
 							this.setState({uploaded : true})
 							this.ocShowAlert('File Uploaded', '#008000');
 							const imageDetails = {
 								owner:localStorage.getItem("email"), //who uploaded the picture
 								contestId:this.props.contestid,//In which contest
-								location:response.data.location,//amazon s3 location
+								imageUrl:response.data.imageUrl,
+								thumbnailUrl: response.data.thumbnailUrl
+								//amazon s3 location
 							}
 							console.log(imageDetails)
 							API.saveImageDetails(imageDetails)
