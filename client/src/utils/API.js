@@ -18,9 +18,9 @@ export default {
     saveImageDetails: function (imageDetails) {
         console.log("image details are " + imageDetails);
         return axios.post("api/images/saveImage", imageDetails);
-        updateUserDetais: function(userDetails) {
-            return axios.patch("/api/users/personalAccount", userDetails);
-        }
+    },
+    updateUserDetais: function(userDetails) {
+        return axios.patch("/api/users/personalAccount", userDetails);
     },
     createContestDetails: function (userDetails) {
         console.log(userDetails)

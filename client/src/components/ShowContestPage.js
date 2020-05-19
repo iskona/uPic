@@ -10,21 +10,22 @@ function ShowContestPage({backToContest, contestData}) {
 
     let buttonLabel = showUpload ? "Done" : "Upload a Pic ";
     return (
-        <div className="jumbotron mx-auto" style={{width:"90%"}}>
+        <div className="jumbotron border container" style={{width:"90%"}}>
            <ContestDetails contestData={contestData} showUpload={showUpload}/>
            {showUpload && <UploadImage contestid={contestData._id}/>}
-            <button
+          <div className="d-flex justify-content-center">
+            <button 
+            className="mx-auto border btn btn-primary"
             onClick={handleUpload}
-            >{buttonLabel}</button>
-         <br />
+            >{buttonLabel}</button></div>
+         <br /><br />
          
          <button
-                className="mt-1 float-right"
+                className="mt-1  btn btn-primary"
                 onClick={backToContest}>
                     Contests
             </button>
-         
-         
+
       </div>
     )
 }
