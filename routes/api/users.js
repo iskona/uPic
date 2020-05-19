@@ -20,4 +20,8 @@ router
     .route("/personalAccount")
     .get(userController.getUserData);
 
+    router
+    .route("/personalAccount")
+    .patch(userController.patchUser);
+
 module.exports = router;
