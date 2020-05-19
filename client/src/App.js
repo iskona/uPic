@@ -7,6 +7,8 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Profile from "./components/Profile"
 import ContestList from "./components/ContestList";
+import Account from "./components/PersonalAcount/Account";
+  import ContestForm from "./components/ContestForm";
 
 function App() {
   return (
@@ -18,7 +20,8 @@ function App() {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/about" component={MainContent} />
         <Route exact path = "/profile"  component = {Profile} />
-        {/* <Route exact path = "/personalAccount"  component = {Account} /> */}
+        <Route exact path = "/personalAccount"  component = {Account} />
+        <Route exact path = "/hostevents"  component = {ContestForm} />
       </div>
     </Router>
   );

@@ -7,12 +7,21 @@ const validateLoginInputData = require("../validations/login");
 
 module.exports = {
     getUserData: (req, res, next) => {
-        console.log(req.user);
-        if (req.user) {
-          return res.json({ user: req.user });
-        } else {
-          return res.json({ user: null });
+        console.log(req);
+        if(!req.user)
+        {
+            return res.status(400).send({ email: "User Does not exists." });
         }
+
+        db.User.findOne(
+            {
+                email: req.user.email
+            }
+        ).then(result => {
+            res.json({user: result})
+        }).catch( error => {
+            res.json({user: null})
+        })
       },
     createUser: function (req, res) {
         console.log(req.body);
@@ -42,10 +51,8 @@ module.exports = {
                         password: req.body.password
                     });
                     newUser.save()
-                        .then(user => res.json(user))
+                        .then(_ => res.redirect(307, "/api/users/login"))
                         .catch(err => console.log(err));
-
-
                 }
             });
     },
@@ -54,5 +61,31 @@ module.exports = {
               email: req.user.email,
               id: req.user.id})
     
-    }
+    },    
+    patchUser: function(req, res){
+        console.log(req.user);
+        if (req.user) {
+            //user exists
+            if(req.body.password)
+            {
+                // user does not exists
+                return res.status(400).send({ message: "Password can not be updated." }); 
+            }
+
+            db.User
+            .findOneAndUpdate(
+                {
+                    email: req.user.email
+                },
+                req.body,
+                {
+                    new: true
+                }
+            ).then(user =>res.json(user));
+        } else {
+          // user does not exists
+          return res.status(400).send({ message: "User does not exists" });
+        }
+    }   
+    
 }

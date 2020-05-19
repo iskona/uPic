@@ -1,0 +1,32 @@
+.contestDetailsDiv{
+    width:780px;
+    margin:0 auto;
+    border-style: outset;
+    height: auto;
+    margin-top :50px;
+}
+@media only screen and (max-width: 400px) {
+    .contestDetailsDiv {
+        width:100%;
+    }
+  }
+.contestFormDiv .form-group{
+
+    width: 800px;
+   margin-left:60px;
+    margin-top:20px;
+ 
+}
+.contestDetailsDiv h3{
+    margin :15px;
+}
+.contestFormDiv .form-control{
+    width:60%;
+    margin-bottom:20px ;
+}
+.contestSaveButton{
+    background-color: green;
+    padding:5px;
+    margin:0 auto;
+}
+

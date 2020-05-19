@@ -12,5 +12,13 @@ export default {
     },
     getUser: function() {
         return axios.get("/api/users/personalAccount");
-      }
+      },
+      updateUserDetais: function(userDetails){
+        return axios.patch("/api/users/personalAccount", userDetails);
+    },
+
+    createContestDetails : function(userDetails) {
+        console.log(userDetails)
+        return axios.post("/api/contests/hostevents",userDetails);
+    }
 }

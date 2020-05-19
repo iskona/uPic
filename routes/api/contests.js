@@ -5,4 +5,9 @@ const contestsController = require("../../controllers/contestController");
 router.route("/")
   .get(contestsController.findAll);
 
+  router.route("/hostevents")
+  .post(contestsController.create)
+
+
+
 module.exports = router;
