@@ -11,7 +11,7 @@ function MainContent() {
     setshowSignUp(true);
   }
   return (
-    <div className >
+    <div  >
       {isMainPage && 
       <div className="container homepageDiv mx-auto" style={{color: "rgb(233,236,239)", height: "100vh", marginTop: "10rem"}}>
         <Title title="Find your Inspiration !!" displaySize="3"/>

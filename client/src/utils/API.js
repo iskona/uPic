@@ -25,5 +25,9 @@ export default {
     createContestDetails: function (userDetails) {
         console.log(userDetails)
         return axios.post("/api/contests/hostevents", userDetails);
+    },
+    getImageDetails: function (contestId){
+        console.log('contest id is '+contestId);
+        return axios.get("api/images/getImages/"+contestId);
     }
 }

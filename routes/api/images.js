@@ -51,7 +51,10 @@ async function uploadFile(filePath, fileName) {
   const params = {
     Bucket: 'upicapp2',
     Key: fileName,
-    Body: fileData
+    Body: fileData,
+    ContentEncoding: 'base64',
+    ContentDisposition: 'inline',
+    ContentType: 'image/jpeg'
   };
   var s3UploadPromise = s3.upload(params, function (s3Err, data) {
     if (s3Err) throw s3Err;
@@ -122,4 +125,9 @@ router
 router
   .route("/saveImage")
   .post(imageController.saveImage);
+
+router
+  .route("/getImages/:contestId")
+  .get(imageController.getImageDetails);
+  
 module.exports = router;

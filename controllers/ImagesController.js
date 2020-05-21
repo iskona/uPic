@@ -96,6 +96,12 @@ module.exports = {
             .create(req.body)
             .then(result => res.json(result))
             .catch(err => res.status(422).json()) ;
+    },
+    getImageDetails: function(req, res){
+        db.Image
+            .find({contestId: req.params.contestId})
+            .then(dbImages => res.json(dbImages))
+            .catch(err => console.log(err));
     }
 
     //get images depending on contest_id

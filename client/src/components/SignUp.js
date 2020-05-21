@@ -3,8 +3,6 @@ import API from '../utils/API';
 import { Redirect } from "react-router-dom";
 
 
-import Profile from "./Profile";
-
 function SignUp() {
     const [loggedIn, setloggedIn] = useState({
         signedin: false,

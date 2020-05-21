@@ -42,7 +42,6 @@ function Navbar() {
                     <NavListItem path="/signup" menuLabel="SignUp" />
                   </ul>
                 );
-                break;
               case "/profile":
               case "/personalAccount":
               case "/hostevents":
@@ -55,7 +54,6 @@ function Navbar() {
                     {/* <li className="nav-item active"><h6><i className="fa fa-bell" /></h6></li> */}
                   </ul>
                 )
-                break;
               case "/contests":
                 return (
                   <ul className="nav headerNav nav-pills nav-justified profileNav">
