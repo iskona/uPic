@@ -61,7 +61,11 @@ module.exports = {
               email: req.user.email,
               id: req.user.id})
     
-    },    
+    },
+    logout : function(req,res) {
+        req.logout();
+        res.redirect("/");
+    },
     patchUser: function(req, res){
         console.log(req.user);
         if (req.user) {
