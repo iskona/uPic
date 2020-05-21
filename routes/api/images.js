@@ -6,10 +6,12 @@ const sharp = require('sharp');
 const fs = require('fs');
 const AWS = require('aws-sdk')
 const imageController = require("../../controllers/ImagesController");
+const tinify = require("tinify");
+require('dotenv').config();
 
 const s3 = new AWS.S3({
-  accessKeyId: 'AKIAJ4NYYLKYJPDBVAQA',
-  secretAccessKey: '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'
+  accessKeyId: process.env.AWSAccessKeyId,
+  secretAccessKey: process.env.AWSSecretKey
 });
 
 const storage = multer.diskStorage({
@@ -48,6 +50,16 @@ async function uploadFile(filePath, fileName) {
   const fileData = fs.readFileSync(filePath);
   if (!fileData) throw new Error("There is some problem with the file reading!!");
 
+  /**
+   * var params = {
+            Bucket: config.BUCKET_NAME,
+            Key: fileName,
+            ContentEncoding: 'base64',
+            ContentDisposition: 'inline',
+            ContentType: 'image/jpeg',
+            Body: buf
+        };
+   */
   const params = {
     Bucket: 'upicapp2',
     Key: fileName,
@@ -76,7 +88,7 @@ const upload = multer({
 
 router
   .post("/img-upload", upload.single('contestImage'), async (req, res, next) => {
-
+/******************* USING TINIFY LIBRARY***************** plz dont delete this commented code
     try {
       console.log('************')
       console.log(req.file.filename)
@@ -87,19 +99,50 @@ router
       console.log('=============imageURL ==============');
       console.log(imageURL);
 
-      // sharp(req.file.path)
-      //   .resize(200, 200)
-      //   .toFile('uploads/' + 'thumbnails-' + req.file.originalname, async (err, resizeImage) => {
-      //     if (err) {
-      //         console.log(err);
-      //     } else {
-
-      //      var thumbURL = await uploadFile(`uploads/thumbnails-${req.file.originalname}`,`thumbnails-${req.file.originalname}`);
-      //      console.log('=============thumbURL ==============');
-      //      console.log(thumbURL);
-
-      //     }
-      // });
+     
+      if (imageURL) {
+        // var resizeImage = await sharp(req.file.path).resize(200, 200).toFile('uploads/' + 'thumbnails-' + req.file.originalname);
+        // console.log('resizeImage ---');
+        // console.log(resizeImage);
+        // if (resizeImage) {
+        tinify.key = 'DgySZ2GwSRj8gSMvjpMqtdr4WKpbCyyW';
+        const source = await tinify.fromFile(req.file.path);
+        const thumbnail = await source.resize({
+          method: "fit",
+          width: 200,
+          height: 200
+        });
+        await thumbnail.toFile('uploads/' + 'thumbnails-' + req.file.originalname);
+        if(thumbnail){
+          var thumbURL = await uploadFile(`uploads/thumbnails-${req.file.originalname}`, `thumbnails-${req.file.originalname}`);
+          console.log('=============thumbURL ==============');
+          console.log(thumbURL);
+         
+          const imgResponse = {
+            imageUrl: imageURL,
+            thumbnailUrl: thumbURL
+          }
+          res.json(imgResponse);
+        }
+        
+        // }
+      }
+      return res.status(500).json();
+    } catch (error) {
+      console.error(error);
+    }  */
+  
+    // USING SHARP LIBRARY
+    try {
+      console.log('************')
+      console.log(req.file.filename)
+      var filePath = req.file.path;
+      var fileName = req.file.filename;
+      console.log("file name passed is " + fileName);
+      var imageURL = await uploadFile(filePath, fileName);
+      console.log('=============imageURL ==============');
+      console.log(imageURL);
+  
       if (imageURL) {
         var resizeImage = await sharp(req.file.path).resize(200, 200).toFile('uploads/' + 'thumbnails-' + req.file.originalname);
         console.log('resizeImage ---');
@@ -113,6 +156,15 @@ router
             imageUrl: imageURL,
             thumbnailUrl: thumbURL
           }
+          var directory = "uploads";
+          fs.readdir(directory,(err,files) => {
+            if(err) throw err;
+            for(const file of files){
+              fs.unlink(path.join(directory,file), err => {
+                if(err) throw err;
+              })
+            }
+          })
           res.json(imgResponse);
         }
       }
@@ -129,5 +181,8 @@ router
 router
   .route("/getImages/:contestId")
   .get(imageController.getImageDetails);
-  
+
+router  
+  .route("/checkUserParticipation/:user/:contestId")
+  .get(imageController.checkUserParticipation);
 module.exports = router;

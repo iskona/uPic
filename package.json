@@ -42,6 +42,7 @@
     "react-masonry-component": "^6.2.1",
     "react-router-dom": "^5.1.2",
     "sharp": "^0.25.3",
+    "tinify": "^1.6.0-beta.2",
     "validator": "^13.0.0"
   }
 }

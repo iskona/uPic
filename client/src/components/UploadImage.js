@@ -20,6 +20,7 @@ class UploadImage extends Component {
 	};
 
 	singleFileUploadHandler = (event) => {
+		this.props.relaodTheComponet();
 		const data = new FormData();
 		console.log("--- contest id ---"+this.props.contestid);
 		// If file selected
@@ -50,6 +51,7 @@ class UploadImage extends Component {
 							console.log('else block '+response.status)
 							// Success
 							this.setState({uploaded : true})
+							this.props.hideUploadButton();
 							this.ocShowAlert('File Uploaded', '#008000');
 							const imageDetails = {
 								owner:localStorage.getItem("email"), //who uploaded the picture
@@ -62,6 +64,7 @@ class UploadImage extends Component {
 							API.saveImageDetails(imageDetails)
 							.then(res => {
 								console.log(res);
+							this.props.relaodTheComponet();
 							})
 							.catch(err => console.log(err))
 						}

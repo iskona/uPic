@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react';
 import API from '../utils/API';
 import { Redirect } from "react-router-dom";
-
+import "../Style/LogInSignUp.css";
 
 function SignUp() {
     const [loggedIn, setloggedIn] = useState({
@@ -32,8 +32,10 @@ function SignUp() {
             });
         });
     }
+
     return (
-        <div>
+        <div className="bgCover">
+
             {!loggedIn.signedin ?
                 (<div className="container p-5 signUpDiv">
                     <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center">
@@ -59,15 +61,15 @@ function SignUp() {
                             </div>
 
                             <button type="submit"
-                                className="btn btn-primary"
+                                className="btn btn-primary btn-block"
                                 onClick={handleSubmit}>
                                 Submit
-                 </button>
-                            <hr />
-                            <h6>
-                                Already a uPic member? <a href="/login">Log in here</a>
-                            </h6>
+                            </button>
                         </form>
+                        <hr />
+                        <h6>
+                            Already a uPic member? <a href="/login">Log in here</a>
+                        </h6>
                     </div>
 
                 </div>) : (<Redirect to={{
@@ -76,10 +78,8 @@ function SignUp() {
                 }}
                 />)
             }
-
-
         </div>
     )
-}
+};
 
-export default SignUp
+export default SignUp;

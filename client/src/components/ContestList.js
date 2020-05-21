@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import API from "../utils/API";
 import Title from './Title';
 import ShowContestPage from "./ShowContestPage";
+import "../Style/LogInSignUp.css";
 
 function ContestList() {
     const [contests, setContests] = useState([]);
@@ -28,7 +29,8 @@ function ContestList() {
     }
 
     return (
-        <div className="container p-5">
+        <div className="bgCover">
+        <div className="container p-5 justify-content-center">
          {!viewClicked &&   <div className="jumbotron mx-auto justify-content-center">
                 <Title title="Photo Contest List" displaySize="5" />
                 <br />
@@ -53,8 +55,8 @@ function ContestList() {
                                             </a>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                
+                            </div> ))}
                         </div>
                     </div>
                 ) : (
@@ -63,6 +65,7 @@ function ContestList() {
                 }
             </div>}
             {viewClicked && <ShowContestPage backToContest={backToContest} contestData={eachContest}/>}
+        </div>
         </div>
     )
 }

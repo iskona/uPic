@@ -54,41 +54,8 @@ const imageUpload = multer({
 
 //defining methods for the imagesController
 module.exports = {
-    //method to upload an image 
-    uploadImage: function ( req, res, next){
-        console.log("@@@@@@@@@@@@@@@@@@@@@@@@@");
-        console.log(req)
-        imageUpload(req, res, (error) => {
-            console.log("***************************************************************")
-            console.log("user is "+req)
-            console.log('requestOkokok', req.file);
-            console.log('error', error);
-            if (error) {
-                console.log('errors', error);
-                res.json({ error: error });
-            } else {
-                // If File not found
-                if (req.file === undefined) {
-                    console.log('Error: No File Selected!');
-                    res.json('Error: No File Selected');
-                } else {
-                    // If Success
-                    const imageName = req.file.key;
-                    const imageLocation = req.file.location;// Save the file name into database into profile modelres.json
-                    ({
-                        image: imageName,
-                        location: imageLocation
-                    });
-                        const imgResponse = {
-                                            image: imageName,
-                                            location: imageLocation
-                                        }
-                    //store the image details location on the  database i.e, image_owner,image_location,contest_id and Rating
-                    res.json(imgResponse);
-                }
-            }
-        });
-    },
+    /*method to upload an image 
+    uploadImage: */
     saveImage : function (req, res ){
         console.log("*******Image controller ************");
         console.log(req.body)
@@ -100,6 +67,12 @@ module.exports = {
     getImageDetails: function(req, res){
         db.Image
             .find({contestId: req.params.contestId})
+            .then(dbImages => res.json(dbImages))
+            .catch(err => console.log(err));
+    },
+    checkUserParticipation: function(req, res ){
+        db.Image    
+            .find({owner: req.params.user, contestId: req.params.contestId})
             .then(dbImages => res.json(dbImages))
             .catch(err => console.log(err));
     }
