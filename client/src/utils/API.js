@@ -31,11 +31,21 @@ export default {
         console.log('contest id is '+contestId);
         return axios.get("api/images/getImages/"+contestId);
     },
+    logoutUser: function(){
+        return axios.get("/api/users/logout")
+    },
+    createContestDetails : function(userDetails) {
+        // console.log(userDetails)
+        return axios.post("/api/contests/hostevents",userDetails);
+    },
     getContests: function() {
         return axios.get("/api/contests/contests");
     },
     checkUserParticipation(user,contestId){
         //this method checks in the image collecion to check if the user passed as an argument had already uploaded an image for the contest id passed.
         return axios.get("/api/images/checkUserParticipation/"+user+"/"+contestId);
+    },
+    getContestByEmail: function(){
+        return axios.get("/api/contests/personalAccount");
     }
 }

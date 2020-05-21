@@ -8,5 +8,7 @@ router.route("/contests")
 router.route("/hostevents")
   .post(contestsController.create)
 
+router.route("/personalAccount")
+.get(contestsController.findContestEmail);
 
 module.exports = router;

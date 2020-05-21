@@ -2,6 +2,10 @@ import React, { useRef } from "react";
 import "../Style/ContestForm.css"
 import API from "../utils/API";
 
+import AccountHeader from "./PersonalAcount/AccountHeader";
+import { Redirect } from "react-router-dom";
+import Contest from "./ContestList";
+import uuid from 'react-uuid'
 
 function ContestForm() {
 
@@ -20,9 +24,11 @@ function ContestForm() {
             title :   titleRef.current.value,
             description : descriptionRef.current.value,
             category : categoryRef.current.value,
-            duedate : dueDate.current.value
+            duedate : dueDate.current.value,
+            id : uuid()
         }).then(
             res => {console.log(res.data)
+             window.location.href  = "/contests"
                
             })
         .catch(err => console.log(err));

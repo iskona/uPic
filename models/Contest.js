@@ -25,6 +25,15 @@ const ContestSchema = new Schema({
     category: {
         type: String,
         required : true
+    },
+    status : {
+        type: String,
+        default: "open"
+    },
+    id :{ 
+        type: String,
+        required : false
+
     }
 });
 
