@@ -3,6 +3,7 @@ import NavListItem from "./NavListItem";
 import { useHistory } from 'react-router-dom'
 import "../Style/NavBar.css"
 import NavSearchForm from "./NavSearchForm"
+import API from "../utils/API";
 
 function Navbar() {
   const history = useHistory()
@@ -16,6 +17,10 @@ function Navbar() {
       console.log(currentPath)
     })
   }, [history])
+
+  const handleLogout = () =>{
+    API.logoutUser().then(res => console.log("Successfully logged out"))
+  }
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -53,6 +58,7 @@ function Navbar() {
                     <NavListItem path="/hostevents" menuLabel="HostEvent"  className ="nav-item"  />
                     <NavListItem path="/contests" menuLabel="Events"  className ="nav-item"/>
                     <NavSearchForm />
+                    <NavListItem path="/" menuLabel="Logout"  className ="nav-item" onClick ={handleLogout}/>
                     {/* <li className="nav-item active"><h6><i className="fa fa-bell" /></h6></li> */}
                   </ul>
                 )

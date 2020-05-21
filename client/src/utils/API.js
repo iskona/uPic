@@ -17,11 +17,17 @@ export default {
         return axios.patch("/api/users/personalAccount", userDetails);
     },
 
+    logoutUser: function(){
+        return axios.get("/api/users/logout")
+    },
     createContestDetails : function(userDetails) {
         // console.log(userDetails)
         return axios.post("/api/contests/hostevents",userDetails);
     },
     getContests: function() {
         return axios.get("/api/contests/contests");
+    },
+    getContestByEmail: function(){
+        return axios.get("/api/contests/personalAccount");
     }
 }
