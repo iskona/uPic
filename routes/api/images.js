@@ -105,7 +105,7 @@ router
         // console.log('resizeImage ---');
         // console.log(resizeImage);
         // if (resizeImage) {
-        tinify.key = 'DgySZ2GwSRj8gSMvjpMqtdr4WKpbCyyW';
+        tinify.key = '';
         const source = await tinify.fromFile(req.file.path);
         const thumbnail = await source.resize({
           method: "fit",
