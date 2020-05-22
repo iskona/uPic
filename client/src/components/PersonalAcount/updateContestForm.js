@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../Style/ContestForm.css"
 import API from "../../utils/API";
-import Contest from "../ContestList";
+
 
 function UpdateContestForm(props) {
     console.log(props)

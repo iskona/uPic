@@ -23,10 +23,10 @@ export default {
     updateUserDetais: function(userDetails) {
         return axios.patch("/api/users/personalAccount", userDetails);
     },
-    createContestDetails: function (userDetails) {
-        console.log(userDetails)
-        return axios.post("/api/contests/hostevents", userDetails);
-    },
+    // createContestDetails: function (userDetails) {
+    //     console.log(userDetails)
+    //     return axios.post("/api/contests/hostevents", userDetails);
+    // },
     getImageDetails: function (contestId){
         console.log('contest id is '+contestId);
         return axios.get("api/images/getImages/"+contestId);

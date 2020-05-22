@@ -33,7 +33,7 @@ function EventsHosted() {
         setcontestformt(false)
      
         console.log(childevent);
-        var index = constestDetails.findIndex(contest => contest.id == childevent.id)
+        var index = constestDetails.findIndex(contest => contest.id === childevent.id)
         console.log(childevent);
 
         setContestDetails(update(constestDetails,{
@@ -53,13 +53,13 @@ function EventsHosted() {
             /> : (
                     <div className="container mt-5">
                         <table className="table  table-hover table-condensed">
-                            <p>{constestDetails.title}</p>
+                            {/* <p>{constestDetails.title}</p> */}
                             <thead className="thead">
                                 <tr>
                                     <th className="col" style={{ width: "15%" }}>Name</th>
-                                    <th className="col" key="Name" style={{ width: "15%" }}> Date </th>
-                                    <th className="col" key="DOB" style={{ width: "20%" }} > Status </th>
-                                    <th className="col" key="DOB" style={{ width: "5%" }} > Edit </th>
+                                    <th className="col" style={{ width: "15%" }}> Date </th>
+                                    <th className="col" style={{ width: "20%" }} > Status </th>
+                                    <th className="col"  style={{ width: "5%" }} > Edit </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,15 +69,15 @@ function EventsHosted() {
                                         <td data-th="Email" className="align-middle" >{item.startdate.substring(0, 10)}</td>
                                         <td data-th="Phone" className="align-middle">{item.status}  </td>
                                        <td>{item.status === "open" &&  <button custom-attribute={item.id} onClick={handlHideShow} >
-                                            <i custom-attribute={item.id} className="fa fa-pencil" aria-hidden="true"  ></i>
+                                            <i custom-attribute={item.id} className="fa fa-pencil" aria-hidden="true"></i>
                                         </button> }</td> 
                                        
                                     </tr>
-                                )) : (" No result to display")}
+                                )) : (<tr><td></td><td>No result to display</td></tr>)}
                             </tbody>
 
-
                         </table>
+
                     </div>
                 )}
 
