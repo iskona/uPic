@@ -44,15 +44,15 @@ module.exports = {
                 db.User.find({}).then(users =>{
                     users = users.map(user => { return {"email" : user.email}})
                     console.log(users);
-                    //var toemail = users.join(",")
-                    //console.log(toemail);
-                    // mail.SendEmail({
-                    //     to: users,
-                    //     title: req.body.title,
-                    //     description: req.body.description,
-                    //     duedate: req.body.duedate,
-                    //     category: req.body.category
-                    // });
+                    var toemail = users.join(",")
+                    console.log(toemail);
+                    mail.SendEmail({
+                        // to: users,
+                        // title: req.body.title,
+                        // description: req.body.description,
+                        // duedate: req.body.duedate,
+                        // category: req.body.category
+                    });
                 }).catch(err=> {
                     console.log(err);
                 })
@@ -60,20 +60,29 @@ module.exports = {
                 res.status(400).json(err);
             });
     },
+getContsetByID : function(req,res){
+    db.Contest.findOne({
+        id : req.params.id
+    }).then(response=>{
+        console.log(response.data);
+        res.json(response)
+    }).catch(err => console.log(err))
+},
+
     patch: function(req,res){
         console.log(req.user);
         if (req.user) {
             //user exists
-            if(req.body.password)
-            {
-                return res.status(400).send({ message: "Password can not be updated." }); 
-            }
-            db.Contest.findByIdAndUpdate({
-                email: req.user.email
-            }
-            ,{
-                new : true
-            }).then(contest => res.json(contest))
+                db.Contest.findOneAndUpdate({
+                    id: req.params.id
+                },
+                req.body,
+                {
+                    new : true
+                }).then(contest => res.json(contest))
+                .catch(err => {
+                    console.log(err)
+                    res.status(500).send({message: "Error"})})
             }
             else{
                 return res.status(400).send({message : "User does not exist"} )
