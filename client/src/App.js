@@ -8,7 +8,7 @@ import SignUp from "./components/SignUp";
 import Profile from "./components/Profile"
 import ContestList from "./components/ContestList";
 import Account from "./components/PersonalAcount/Account";
-  import ContestForm from "./components/ContestForm";
+import ContestForm from "./components/ContestForm";
 
 function App() {
   return (

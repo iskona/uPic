@@ -3,8 +3,6 @@ import API from '../utils/API';
 import { Redirect } from "react-router-dom";
 import "../Style/LogInSignUp.css";
 
-import Profile from "./Profile";
-
 function SignUp() {
     const [loggedIn, setloggedIn] = useState({
         signedin: false,
@@ -25,15 +23,14 @@ function SignUp() {
             password: passwordRef.current.value,
             password2: password2Ref.current.value
         })
-            .then(result => {
-                console.log(result.data);
-                setloggedIn({
-                    signedin: true,
-                    user: result.data.email
-                });
-
-
+        .then(result => {
+            console.log(result.data)
+            localStorage.setItem("email",result.data.email);
+            setloggedIn({
+                signedin: true,
+                user: result.data.email
             });
+        });
     }
 
     return (

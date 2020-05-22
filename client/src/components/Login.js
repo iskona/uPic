@@ -14,10 +14,11 @@ function Login() {
             email: emailRef.current.value,
             password: passwordRef.current.value
         })
-            .then(result => {
-                console.log(result.data);
-                setloggedIn(true);
-            });
+        .then(result =>{
+            console.log(result.data.email);
+            localStorage.setItem("email",result.data.email);
+            setloggedIn(true);
+        });
     }
 
     return (

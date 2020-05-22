@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../NavBar";
-import Login from "../Login";
+
 import PersonalData from "./PersonalData";
 import EventsHosted from "./EventsHosted";
 import Participation from "./Participation"
@@ -20,14 +19,12 @@ function AccountNav(props) {
         switch (renderComponent) {
             case "personalData":
                 return <PersonalData userInfo={userInfo} />
-                break;
             case "eventsHosted":
                 return <EventsHosted />
-                break;
             case "participation":
                 return <Participation />
+            default:
                 break;
-
         }
     }
     return (

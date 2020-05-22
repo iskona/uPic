@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../Style/profile.css"
-import API from "../utils/API";
-import { useHistory } from 'react-router-dom';
-import NavBar from "./NavBar";
+
 
 function Profile() {
    
