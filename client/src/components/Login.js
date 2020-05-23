@@ -2,15 +2,15 @@ import React, { useRef, useState } from 'react';
 import API from '../utils/API';
 import { Redirect } from "react-router-dom";
 import Title from './Title';
-import Img6 from '../Style/Img/7.jpg';
+import Img from '../Style/Img/7.jpg';
 import "../Style/LogInSignUp.css";
 
 function Login() {
     const [loggedIn, setloggedIn] = useState(false);
     const emailRef = useRef();
     const passwordRef = useRef();
-    let bgStyle = {
-        backgroundImage: "url(" + Img6 + ")"
+    const bgStyle = {
+        backgroundImage: "url(" + Img + ")"
     };
     const handleSubmit = (event) => {
         event.preventDefault();
