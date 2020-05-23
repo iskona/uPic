@@ -54,6 +54,7 @@ function ShowContestPage({ backToContest, contestData }) {
     }, [relaodImages]);
 
     return (
+      
         <div className="jumbotron border m-1">
             <ContestDetails contestData={contestData} showUpload={showUpload} />
             {/* Display Images grid, which are already added to the contest by all the other users */}
@@ -97,6 +98,7 @@ function ShowContestPage({ backToContest, contestData }) {
 
             <Button classNames="mt-1 btn btn-primary" onClickHandler={backToContest} label="Contests" />
         </div>
+     
     )
 }
 

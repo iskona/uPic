@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function ImagePage(props) {
     const {imageUrl} = props.location.state
     return (
-        <div style={{backgroundColor:"#161618"}} className="p-3">
+        <div style={{backgroundColor:"#161618",height: "100vh"}} className="p-3">
             Image page
             <br />
             <Link to={{

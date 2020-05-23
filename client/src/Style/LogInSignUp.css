@@ -4,8 +4,7 @@
     background-image: url("../tree.jpg");
     background-position: center;
     background-repeat: no-repeat; 
-    background-size: 100%;
-    height:"100vh";
+    background-size: cover;
 }
 
 .jumbotron {
