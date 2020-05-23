@@ -1,34 +1,36 @@
 import React, { useRef, useState } from 'react';
 import API from '../utils/API';
 import { Redirect } from "react-router-dom";
+import Title from './Title';
+import Img6 from '../Style/Img/7.jpg';
 import "../Style/LogInSignUp.css";
 
 function Login() {
     const [loggedIn, setloggedIn] = useState(false);
     const emailRef = useRef();
     const passwordRef = useRef();
-
+    let bgStyle = {
+        backgroundImage: "url(" + Img6 + ")"
+    };
     const handleSubmit = (event) => {
         event.preventDefault();
         API.checkUser({
             email: emailRef.current.value,
             password: passwordRef.current.value
         })
-        .then(result =>{
-            console.log(result.data.email);
-            localStorage.setItem("email",result.data.email);
-            setloggedIn(true);
-        });
+            .then(result => {
+                console.log(result.data.email);
+                localStorage.setItem("email", result.data.email);
+                setloggedIn(true);
+            });
     }
 
     return (
-        <div className="bgCover">
+        <div className="bgCover" style={bgStyle}>
             {!loggedIn &&
                 <div className="container p-5 loginDiv">
                     <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center" >
-                        <h2>
-                            Log in to uPic
-                </h2>
+                        <Title title="Log in to uPic" displaySize="5" />
                         <form className="p-5 mx-auto">
                             <div className="form-group">
                                 <input type="email"
@@ -41,7 +43,7 @@ function Login() {
                                     ref={passwordRef} />
                             </div>
                             <button type="submit"
-                                className="btn btn-primary btn-block"
+                                className="btn btn-secondary btn-block"
                                 onClick={handleSubmit}>
                                 Login
                             </button>
