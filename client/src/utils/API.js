@@ -23,10 +23,10 @@ export default {
     updateUserDetais: function(userDetails) {
         return axios.patch("/api/users/personalAccount", userDetails);
     },
-    createContestDetails: function (userDetails) {
-        console.log(userDetails)
-        return axios.post("/api/contests/hostevents", userDetails);
-    },
+    // createContestDetails: function (userDetails) {
+    //     console.log(userDetails)
+    //     return axios.post("/api/contests/hostevents", userDetails);
+    // },
     getImageDetails: function (contestId){
         console.log('contest id is '+contestId);
         return axios.get("api/images/getImages/"+contestId);
@@ -34,8 +34,10 @@ export default {
     logoutUser: function(){
         return axios.get("/api/users/logout")
     },
+
+    //Contest Api
+
     createContestDetails : function(userDetails) {
-        // console.log(userDetails)
         return axios.post("/api/contests/hostevents",userDetails);
     },
     getContests: function() {
@@ -47,5 +49,11 @@ export default {
     },
     getContestByEmail: function(){
         return axios.get("/api/contests/personalAccount");
+    },
+    getContestByID :function(id){
+        return axios.get("/api/contests/personalAccount/" + id)
+    },
+    updateContestDetails : function(id,userDetails){
+        return axios.patch("/api/contests/personalAccount/" + id,userDetails )
     }
 }
