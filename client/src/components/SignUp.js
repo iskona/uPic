@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import API from '../utils/API';
 import { Redirect } from "react-router-dom";
 import "../Style/LogInSignUp.css";
+import Title from './Title';
+import Img from '../Style/Img/6.jpg';
 
 function SignUp() {
     const [loggedIn, setloggedIn] = useState({
@@ -9,11 +11,13 @@ function SignUp() {
         user: ""
     });
 
-
     const nameRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const password2Ref = useRef();
+    const bgStyle = {
+        backgroundImage: "url(" + Img + ")"
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -23,23 +27,23 @@ function SignUp() {
             password: passwordRef.current.value,
             password2: password2Ref.current.value
         })
-        .then(result => {
-            console.log(result.data)
-            localStorage.setItem("email",result.data.email);
-            setloggedIn({
-                signedin: true,
-                user: result.data.email
+            .then(result => {
+                console.log(result.data)
+                localStorage.setItem("email", result.data.email);
+                setloggedIn({
+                    signedin: true,
+                    user: result.data.email
+                });
             });
-        });
     }
 
     return (
-        <div className="bgCover">
+        <div className="bgCover" style={bgStyle}>
 
             {!loggedIn.signedin ?
                 (<div className="container p-5 signUpDiv">
                     <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center">
-                        <h2>Sign up for uPic</h2>
+                        <Title title="Sign up for uPic" displaySize="5" />
                         <form className="p-5 mx-auto">
                             <div className="form-group">
                                 <input type="text"
@@ -61,7 +65,7 @@ function SignUp() {
                             </div>
 
                             <button type="submit"
-                                className="btn btn-primary btn-block"
+                                className="btn btn-secondary btn-block"
                                 onClick={handleSubmit}>
                                 Submit
                             </button>
