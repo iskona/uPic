@@ -47,5 +47,12 @@ export default {
     },
     getContestByEmail: function(){
         return axios.get("/api/contests/personalAccount");
+    },
+    getRating: function(img_id,contest_id,user){
+        return axios.get("/api/images/getImageRating/"+img_id+"/"+contest_id+"/"+user);
+    },
+    updateRating: function(ratingDetails){
+      console.log(ratingDetails)
+       return axios.put("/api/images/updateRating",ratingDetails);
     }
 }

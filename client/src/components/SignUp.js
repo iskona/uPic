@@ -37,7 +37,7 @@ function SignUp() {
         <div className="bgCover">
 
             {!loggedIn.signedin ?
-                (<div className="container p-5 signUpDiv">
+                (<div className="container p-5 signUpDiv" style={{height: "100vh"}}>
                     <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center">
                         <h2>Sign up for uPic</h2>
                         <form className="p-5 mx-auto">

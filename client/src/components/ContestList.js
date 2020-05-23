@@ -30,7 +30,7 @@ function ContestList() {
 
     return (
         <div className="bgCover">
-        <div className="container p-5 justify-content-center">
+        <div className="container p-5 justify-content-center" style={{height: "100vh"}}>
          {!viewClicked &&   <div className="jumbotron mx-auto justify-content-center">
                 <Title title="Photo Contest List" displaySize="5" />
                 <br />

@@ -10,6 +10,7 @@ import Masonry from 'react-masonry-component';
 import { masonryOptions } from "./ImageMasonryComponent";
 import RatingForm from './Rating/RatingForm';
 import Title from './Title';
+import { Link } from 'react-router-dom';
 
 function ShowContestPage({ backToContest, contestData }) {
     const [showUpload, setShowUpload] = useState(false);
@@ -67,11 +68,20 @@ function ShowContestPage({ backToContest, contestData }) {
                 {images.map((img, i) => {
                     return (
                         <div className="pb-0" style={{backgroundColor:"rgb(108,117,125)"}} key={i}>
-                            <a href={img.imageUrl}> <img
+                            {/* <a href={img.imageUrl}> <img
                                 src={img.thumbnailUrl}
                                 style={{ width: 320 }}
-                                alt="Contest images" /> </a>
-                            <RatingForm img={img} i={i} />
+                                alt="Contest images" /> </a> */}
+                            <Link to={{
+                                pathname:"/image",
+                                state: {
+                                    imageUrl : img.imageUrl
+                                }
+                                }}> <img
+                                src={img.thumbnailUrl}
+                                style={{ width: 320 }}
+                                alt="Contest images" /> </Link>
+                            <RatingForm img={img} i={i} contestId={contestData._id}/>
                         </div>
                     )
                 })}
