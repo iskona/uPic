@@ -9,6 +9,8 @@ import Profile from "./components/Profile"
 import ContestList from "./components/ContestList";
 import Account from "./components/PersonalAcount/Account";
 import ContestForm from "./components/ContestForm";
+import ImagePage from "./components/ImagePage";
+import ShowContestPage from "./components/ShowContestPage";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route exact path = "/personalAccount"  component = {Account} />
         <Route exact path = "/hostevents"  component = {ContestForm} />
         <Route exact path = "/contests"  component = {ContestList} />
+        <Route exact path = "/image" component = {ImagePage} />
+        <Route exact path = "/showcontest" component = {ShowContestPage} />
 
       </div>
     </Router>

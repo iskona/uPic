@@ -25,7 +25,7 @@ function Login() {
         <div className="bgCover">
             {!loggedIn &&
                 <div className="container p-5 loginDiv">
-                    <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center">
+                    <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center" >
                         <h2>
                             Log in to uPic
                 </h2>

@@ -45,8 +45,10 @@
     "react-masonry-component": "^6.2.1",
     "react-router-dom": "^5.1.2",
     "react-uuid": "^1.0.2",
-    "sharp": "^0.25.3",
     "reactjs-popup": "^1.5.0",
+    "sharp": "^0.25.3",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0",
     "tinify": "^1.6.0-beta.2",
     "uuid": "^8.1.0",
     "validator": "^13.0.0"

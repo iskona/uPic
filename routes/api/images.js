@@ -144,7 +144,7 @@ router
       console.log(imageURL);
   
       if (imageURL) {
-        var resizeImage = await sharp(req.file.path).resize(200, 200).toFile('uploads/' + 'thumbnails-' + req.file.originalname);
+        var resizeImage = await sharp(req.file.path).resize(150, 150).toFile('uploads/' + 'thumbnails-' + req.file.originalname);
         console.log('resizeImage ---');
         console.log(resizeImage);
         if (resizeImage) {
@@ -185,4 +185,12 @@ router
 router  
   .route("/checkUserParticipation/:user/:contestId")
   .get(imageController.checkUserParticipation);
+
+router 
+  .route("/updateRating")
+  .put(imageController.updateRating);
+
+router
+  .route("/getImageRating/:img_id/:contest_id/:user")
+  .get(imageController.getImageRating);
 module.exports = router;
