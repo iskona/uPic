@@ -11,4 +11,12 @@ router.route("/hostevents")
 router.route("/personalAccount")
 .get(contestsController.findContestEmail);
 
+router.route("/personalAccount/:id")
+.patch(contestsController.patch)
+
+router.route("/personalAccount/:id")
+.get(contestsController.getContsetByID)
+
+
 module.exports = router;
+
