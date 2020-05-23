@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+html, body {
+    height:100%;
+} 
+
+.bgCover {
+    background: url("../Style/Img/3.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.jumbotron {
+    background: rgba(204, 204, 204, 0.5);
+}
+
+.title {
+    font-family: 'Poppins', sans-serif;
+    color: #343a40;
+}
