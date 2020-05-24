@@ -193,4 +193,12 @@ router
 router
   .route("/getImageRating/:img_id/:contest_id/:user")
   .get(imageController.getImageRating);
+
+router
+  .route("/calcAverageRating/:contest_id")
+  .get(imageController.calcAverageRating);
+
+router
+  .route("/setAvgRating")
+  .put(imageController.updateAvgRating);
 module.exports = router;
