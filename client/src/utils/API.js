@@ -62,5 +62,11 @@ export default {
     },
     updateContestDetails : function(id,userDetails){
         return axios.patch("/api/contests/personalAccount/" + id,userDetails )
+    },
+    getAverageRating : function(contest_id){
+        return axios.get("api/images/calcAverageRating/"+contest_id);
+    },
+    updateAverageRating: function(contestRatings){
+        return axios.put("/api/images/setAvgRating",contestRatings);
     }
 }

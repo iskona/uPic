@@ -51,10 +51,65 @@ function UpdateContestForm(props) {
             description: state.description,
             category: state.category,
             duedate: state.dueDate,
-            status : state.status
+            status: state.status
         }).then(result => {
             console.log("record updated");
+            console.log(result.data)
+
             props.setDescriptionDetails(result.data)
+            if (result.data.status === "Closed") {
+                console.log("CONTEST IS DONE ");
+                //make an api call to calculate the image's average rating and updating the rating for each image in images table.
+                API.getAverageRating(result.data._id)
+                    .then(dbData => {
+                        console.log(dbData.data)
+                        const contestId = dbData.data[0].contest_id;
+                        const images = dbData.data;
+                        /******
+                         *  another way of getting distinct image ids 
+                            const filtered = images.map(image => image.image_id)
+                                   .filter((value, index, self) => self.indexOf(value) === index);
+                            console.log(filtered) 
+                            ***********/
+                        var unique = [];
+                        var distinct = [];
+                        for (let i = 0; i < images.length; i++) {
+                            if (!unique[images[i].image_id]) {
+                                distinct.push(images[i].image_id);
+                                unique[images[i].image_id] = 1;
+                            }
+                        }
+                        var ratingsArr = [];
+                        for (let i = 0; i < distinct.length; i++) {
+                            var eachImage = images.filter(function (image) {
+                                return image.image_id == distinct[i];
+                            });
+                            //find the average of all the ratings
+                            var sum_rating = 0;
+                            for (let j = 0; j < eachImage.length; j++) {
+                                sum_rating += eachImage[j].rating;
+                            }
+                            var avg_rating = sum_rating / eachImage.length;
+
+                            console.log('==== avg rating of ' + distinct[i] + " is " + Math.floor(avg_rating));
+                            var imagekey = distinct[i], ratingVal = Math.floor(avg_rating);
+                            var obj={};
+                            obj[imagekey] = ratingVal;
+                            ratingsArr.push(obj);
+                        }
+
+                        const contestRatings = {
+                            contest_id: contestId,
+                            ratingsArr: ratingsArr,
+                            owner: localStorage.getItem("email")
+                        }
+            
+                        API.updateAverageRating(contestRatings)
+                            .then(dbResponse => console.log(dbResponse))
+                            .catch(err => console.log(err));
+                    })
+                    .catch(err => console.log(err));
+            }
         })
     }
     return (
