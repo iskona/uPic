@@ -2,7 +2,6 @@ import React, { useRef } from "react";
 import "../Style/ContestForm.css"
 import API from "../utils/API";
 import uuid from 'react-uuid'
-
 function ContestForm() {
 
     const categoriesList = ["Portrait", "Still Life", "Landscape", "Food", "Wildlife", "Macro", "Event",
@@ -12,8 +11,6 @@ function ContestForm() {
     const descriptionRef = useRef();
     const categoryRef = useRef();
     const dueDate = useRef();
-
-
     const handleSubmit = (event) => {
         event.preventDefault();
         API.createContestDetails({

@@ -33,6 +33,13 @@ module.exports = {
                 {
                     image_id: req.body.image_id, contest_id: req.body.contest_id, user: req.body.user
                 }, //filter
+
+    getImagesUploadedByUser : function(req,res) {
+        db.Image.find({
+            owner : req.user.email
+        }).then(result => {
+            res.json(result)
+        }).catch(err => console.log(err))
                 {
                     rating: req.body.rating
                 }, //update

@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import API from "../../utils/API";
+import "../../Style/participation.css"
+function Participation() {
 
-function Participation(){
+    const [personalImages, setPerosnalImages] = useState([])
+
+    useEffect(() => {
+        API.getPersonalImages()
+            .then(result => {
+                console.log(result.data);
+                setPerosnalImages(result.data)
+            })
+    }, [])
+
+
     return (
-        <div className="container mt-5">
-            <table className="table table-striped table-hover table-condensed">
-                <thead className="thead">
-                    <tr>
-                        <th className="col" style={{ width: "15%" }}>Name</th>
-                        <th className="col" key="Name" style={{ width: "15%" }}>Date</th>
-                        <th className="col" key="DOB" style={{ width: "20%" }} >Status</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
+        <React.Fragment>
+            <div className="participationDiv" >
+                <div className="personalImageDiv"></div>
+                    {personalImages.map(item => {
+                        return (<div class="col-1-4">
+                        <img src={item.imageUrl}/>
+                      </div>)
+
+
+
+                    })}
+              
+            </div>
+        </React.Fragment>
     )
 }
 export default Participation;
