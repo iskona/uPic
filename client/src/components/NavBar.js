@@ -18,7 +18,6 @@ function Navbar() {
   let client = stream.connect('cbam34cnp437', userToken, '80330')
   var notification = client.feed('notification', 'upic');
   var subscription;
-  var oldnotifiacationmessages;
 
   useEffect(() => {
     return history.listen(location => {
@@ -81,6 +80,7 @@ function Navbar() {
               case "/profile":
               case "/personalAccount":
               case "/hostevents":
+              case "/search":
                 return (
                   <ul className="nav headerNav nav-pills nav-justified profileNav">
                     <NavListItem path="/personalAccount" menuLabel="Account"  className ="nav-item"/>
@@ -99,10 +99,10 @@ function Navbar() {
                   <NavListItem path="/personalAccount" menuLabel="Account"  className ="nav-item"/>
                   <NavListItem path="/hostevents" menuLabel="HostEvent"  className ="nav-item"  />
                   <NavSearchForm />
-                  <NavListItem path="/" menuLabel="Logout"  className ="nav-item" onClick ={handleLogout}/>
-                  {/* <li className="nav-item active"><h6><i className="fa fa-bell" /></h6></li> */}
                   <NotificationContainer/>
-                  <li onClick = {initNotifications}  className="nav-item active"><h6><i className="fa fa-bell" /></h6></li> 
+                  <li onClick = {initNotifications}  className="nav-item active"><h6><i className="fa fa-bell pt-3"/></h6></li> 
+
+                  <NavListItem path="/" menuLabel="Logout"  className ="nav-item" onClick ={handleLogout}/>
                 </ul>
                 )
               default:

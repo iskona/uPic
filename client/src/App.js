@@ -11,6 +11,7 @@ import Account from "./components/PersonalAcount/Account";
 import ContestForm from "./components/ContestForm";
 import ImagePage from "./components/ImagePage";
 import ShowContestPage from "./components/ShowContestPage";
+import SearchedContests from "./components/SearchedContests";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route exact path = "/contests"  component = {ContestList} />
         <Route exact path = "/image" component = {ImagePage} />
         <Route exact path = "/showcontest" component = {ShowContestPage} />
+        <Route exact path = "/search" component = {SearchedContests} />
 
       </div>
     </Router>

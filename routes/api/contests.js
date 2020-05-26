@@ -20,6 +20,8 @@ router.route("/personalAccount/:id")
 router.route("/personalAccount/:id")
 .get(contestsController.getContsetByID)
 
+router.route("/searchforAcategory/:category")
+.get(contestsController.searchforAcategory);
 
 module.exports = router;
 
