@@ -1,0 +1,22 @@
+.participationDiv{
+    width:800px;
+    margin:0 auto;
+
+}
+.imageDiv{
+    display:inline-block;
+    /* overflow: hidden; */
+    width: 350px;
+    height:300px;
+    border:1px solid;
+}
+.col-1-4{
+    width:50%;
+    float:left;
+    /* display:inline-block; */
+  }
+  img{
+    max-width:100%;
+    margin:10px;
+    padding:20px;
+  }
