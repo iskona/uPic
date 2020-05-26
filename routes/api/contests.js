@@ -2,8 +2,11 @@ const router = require("express").Router();
 const contestsController = require("../../controllers/contestController");
 
 // Matches with "/api/contests"
-router.route("/contests")
-  .get(contestsController.findAll);
+router.route("/openContests")
+  .get(contestsController.findAllOpenContests);
+
+router.route("/closedContests")
+  .get(contestsController.findAllClosedContests);
 
 router.route("/hostevents")
   .post(contestsController.create)

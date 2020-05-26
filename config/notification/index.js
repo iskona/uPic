@@ -1,5 +1,5 @@
 let stream = require('getstream');
-let server = stream.connect('cbam34cnp437', process.env.GETSTREAM_SERVERKEY);
+let server = stream.connect('cbam34cnp437',process.env.GETSTREAM_SERVERKEY);
 let feed = server.feed('notification', 'upic');
 
 exports.CreateContest = function (contest) {

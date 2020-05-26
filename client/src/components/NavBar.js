@@ -74,8 +74,8 @@ function Navbar() {
                 return (
                   <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
                     <NavListItem path="/about" menuLabel="About" />
-                    <NavListItem path="/login" menuLabel="LogIn" />
                     <NavListItem path="/signup" menuLabel="SignUp" />
+                    <NavListItem path="/login" menuLabel="LogIn" />
                   </ul>
                 );
               case "/profile":
@@ -99,6 +99,8 @@ function Navbar() {
                   <NavListItem path="/personalAccount" menuLabel="Account"  className ="nav-item"/>
                   <NavListItem path="/hostevents" menuLabel="HostEvent"  className ="nav-item"  />
                   <NavSearchForm />
+                  <NavListItem path="/" menuLabel="Logout"  className ="nav-item" onClick ={handleLogout}/>
+                  {/* <li className="nav-item active"><h6><i className="fa fa-bell" /></h6></li> */}
                   <NotificationContainer/>
                   <li onClick = {initNotifications}  className="nav-item active"><h6><i className="fa fa-bell" /></h6></li> 
                 </ul>

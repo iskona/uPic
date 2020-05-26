@@ -3,8 +3,15 @@ const mail = require("../config/mailjet");
 const notification = require("../config/notification");
 // Defining methods for the contestsController
 module.exports = {
-    findAll: function (req, res) {
-        db.Contest.find({})
+    findAllOpenContests: function (req, res) {
+        db.Contest.find({status:"open"})
+            .then(data => {
+                res.json(data);
+            })
+            .catch(err => console.log(err));
+    },
+    findAllClosedContests: function (req, res) {
+        db.Contest.find({status:"Closed"})
             .then(data => {
                 res.json(data);
             })
