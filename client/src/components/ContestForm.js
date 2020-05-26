@@ -22,7 +22,6 @@ function ContestForm() {
         }).then(
             res => {console.log(res.data)
              window.location.href  = "/contests"
-               
             })
         .catch(err => console.log(err));
     }
