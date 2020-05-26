@@ -75,5 +75,8 @@ export default {
     },
     updateAverageRating: function(contestRatings){
         return axios.put("/api/images/setAvgRating",contestRatings);
+    },
+    searchContests: function(category){
+        return axios.get("/api/contests/searchforAcategory/"+category);
     }
 }

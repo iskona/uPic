@@ -16,7 +16,7 @@ function ContestForm() {
         API.createContestDetails({
             title :   titleRef.current.value,
             description : descriptionRef.current.value,
-            category : categoryRef.current.value,
+            category : categoryRef.current.value.toLowerCase(),
             duedate : dueDate.current.value,
             id : uuid()
         }).then(

@@ -102,6 +102,12 @@ patch: function(req,res){
         else{
             return res.status(400).send({message : "User does not exist"} )
         }
+    },
+    searchforAcategory: function(req, res){
+        db.Contest
+            .find({category:req.params.category})
+            .then(dbContests => res.json(dbContests))
+            .catch(err => res.json(err));
     }
 }
 
