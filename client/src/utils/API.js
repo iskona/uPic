@@ -40,8 +40,11 @@ export default {
     createContestDetails : function(userDetails) {
         return axios.post("/api/contests/hostevents",userDetails);
     },
-    getContests: function() {
-        return axios.get("/api/contests/contests");
+    getOpenContests: function() {
+        return axios.get("/api/contests/openContests");
+    },
+    getClosedContests: function() {
+        return axios.get("/api/contests/closedContests");
     },
     checkUserParticipation(user,contestId){
         //this method checks in the image collecion to check if the user passed as an argument had already uploaded an image for the contest id passed.

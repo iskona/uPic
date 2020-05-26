@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function ImagePage(props) {
+function ImagePage( props) {
     const {imageUrl} = props.location.state
+    console.log("imageUrl "+imageUrl)
+ 
     return (
         <div style={{backgroundColor:"#161618",height: "100vh"}} className="p-3">
             Image page
@@ -10,7 +12,7 @@ function ImagePage(props) {
             <Link to={{
                 pathname:"/contests"
             }} className="float-right" >Back to Contests</Link>
-            <br />
+         <br />
             <img src={imageUrl} alt=""></img>
         </div>
     )

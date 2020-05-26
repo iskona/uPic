@@ -17,6 +17,7 @@ module.exports = {
     getImageDetails: function (req, res) {
         db.Image
             .find({ contestId: req.params.contestId })
+            .sort({ rating: -1 })
             .then(dbImages => res.json(dbImages))
             .catch(err => console.log(err));
     },
