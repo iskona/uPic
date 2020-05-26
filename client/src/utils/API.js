@@ -31,6 +31,10 @@ export default {
         console.log('contest id is '+contestId);
         return axios.get("api/images/getImages/"+contestId);
     },
+
+    getPersonalImages : function(){
+        return axios.get("/api/images/personalAccount");
+    },
     logoutUser: function(){
         return axios.get("/api/users/logout")
     },

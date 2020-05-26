@@ -4,12 +4,21 @@ import { useHistory } from 'react-router-dom'
 import "../Style/NavBar.css"
 import NavSearchForm from "./NavSearchForm"
 import API from "../utils/API";
+//import { StreamApp, NotificationDropdown  } from 'react-activity-feed';
+import 'react-notifications/lib/notifications.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+let stream = require('getstream');
 
 function Navbar() {
   const history = useHistory()
-
-
   const [currentPath, setcurrentPath] = useState(window.location.pathname);
+  //const [notificationState, setNotificationState] = useState(false);
+
+  let userToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoidXBpYyJ9.k1P-ctjAM1fjTxQQATPIpwUGlEIUipaTfh_U_59goyc"
+  let client = stream.connect('cbam34cnp437', userToken, '80330')
+  var notification = client.feed('notification', 'upic');
+  var subscription;
+  var oldnotifiacationmessages;
 
   useEffect(() => {
     return history.listen(location => {
@@ -18,8 +27,30 @@ function Navbar() {
     })
   }, [history])
 
+  useEffect(() => {
+    //subscribe to any events
+    var subscription = notification.subscribe(function(data) {
+      let notificationmessage = JSON.parse(data.new[0].object);
+      NotificationManager.success(notificationmessage.title, notificationmessage.message, 5000,()=>{
+        window.location.replace(notificationmessage.redirecturl)
+      });
+    });
+  }, [])
+
+  const initNotifications = ()=> {
+    notification.get().then((data)=> {
+      data.results[0].activities.slice(0,5).forEach(activity => {
+        let notificationmessage = JSON.parse(activity.object);
+        NotificationManager.success(notificationmessage.title, notificationmessage.message, 5000, ()=>{
+          window.location.replace(notificationmessage.redirecturl)
+        });
+      })
+    });
+  }
+
   const handleLogout = () =>{
     API.logoutUser().then(res => console.log("Successfully logged out"))
+    subscription.cancel();
   }
 
   return (
@@ -56,8 +87,10 @@ function Navbar() {
                     <NavListItem path="/hostevents" menuLabel="HostEvent"  className ="nav-item"  />
                     <NavListItem path="/contests" menuLabel="Contests"  className ="nav-item"/>
                     <NavSearchForm />
+                    {/* <NavListItem path="/notification" menuLabel="HostEvent"  className ="nav-item"  /> */}
                     <NavListItem path="/" menuLabel="Logout"  className ="nav-item" onClick ={handleLogout}/>
-                    {/* <li className="nav-item active"><h6><i className="fa fa-bell" /></h6></li> */}
+                    <li onClick = {initNotifications} className="nav-item active"><h6><i className="fa fa-bell" /></h6></li> 
+                    <NotificationContainer/>
                   </ul>
                 )
               case "/contests":
@@ -68,6 +101,8 @@ function Navbar() {
                   <NavSearchForm />
                   <NavListItem path="/" menuLabel="Logout"  className ="nav-item" onClick ={handleLogout}/>
                   {/* <li className="nav-item active"><h6><i className="fa fa-bell" /></h6></li> */}
+                  <NotificationContainer/>
+                  <li onClick = {initNotifications}  className="nav-item active"><h6><i className="fa fa-bell" /></h6></li> 
                 </ul>
                 )
               default:

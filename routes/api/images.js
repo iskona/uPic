@@ -186,7 +186,11 @@ router
   .route("/checkUserParticipation/:user/:contestId")
   .get(imageController.checkUserParticipation);
 
-router 
+
+  router.route("/personalAccount")
+  .get(imageController.getImagesUploadedByUser);
+  
+  router 
   .route("/updateRating")
   .put(imageController.updateRating);
 

@@ -27,7 +27,7 @@ module.exports = {
             .then(dbImages => res.json(dbImages))
             .catch(err => console.log(err));
     },
-    updateRating: function (req, res) {
+	updateRating: function (req, res) {
         //search for the combination of image id    
         db.Rating
             .findOneAndUpdate(
@@ -43,6 +43,13 @@ module.exports = {
                 })
             .then(updatedData => res.json(updatedData))
             .catch(err => res.status(422).json(err));
+    },
+    getImagesUploadedByUser : function(req,res) {
+        db.Image.find({
+            owner : req.user.email
+        }).then(result => {
+            res.json(result)
+        }).catch(err => console.log(err))
     },
     getImageRating: function (req, res) {
         console.log(req.params.img_id + "  " + req.params.contest_id + "  " + req.params.user);
