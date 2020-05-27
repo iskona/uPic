@@ -26,7 +26,11 @@ if (process.env.NODE_ENV === "production") {
 
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/photocontestdb", { useNewUrlParser: true })
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/photocontestdb", { useNewUrlParser: true })
+//   .then(() => console.log("Mongo Db successfully connected "))
+//   .catch(err => console.log(err));
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://photosdb:password1@ds041546.mlab.com:41546/heroku_l1n7xq0g", { useNewUrlParser: true })
   .then(() => console.log("Mongo Db successfully connected "))
   .catch(err => console.log(err));
 
@@ -35,12 +39,10 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 //passport Config
-//require("./config/passport")(passport);
 
 //Routes 
 app.use("/api/images",upload);
 app.use(routes);
-// app.use("/", routes)
 
 // Send every other request to the React app Define any API routes before this runs
 app.get("*", (req, res) => {

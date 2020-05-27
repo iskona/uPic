@@ -26,7 +26,7 @@ function NavSearchForm() {
     <>
     <div className="searchbox d-flex justify-content-center">
       <form className="form-inline">
-        <div className="input-group mr-4">
+        <div className="input-group mx-4 ">
           <input
             className="form-control navBarSearch my-lg-0"
              ref={inputRef}
