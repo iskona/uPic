@@ -71,7 +71,7 @@ function Navbar() {
               case "/login":
               case "/signup":
                 return (
-                  <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
+                  <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ml-auto">
                     <NavListItem path="/about" menuLabel="About" />
                     <NavListItem path="/signup" menuLabel="SignUp" />
                     <NavListItem path="/login" menuLabel="LogIn" />
@@ -82,7 +82,7 @@ function Navbar() {
               case "/hostevents":
               case "/search":
                 return (
-                  <ul className="nav headerNav nav-pills nav-justified profileNav">
+                  <ul className="nav headerNav nav-pills nav-justified profileNav  ml-auto">
                     <NavListItem path="/personalAccount" menuLabel="Account"  className ="nav-item"/>
                     <NavListItem path="/hostevents" menuLabel="HostEvent"  className ="nav-item"  />
                     <NavListItem path="/contests" menuLabel="Contests"  className ="nav-item"/>
@@ -95,7 +95,7 @@ function Navbar() {
                 )
               case "/contests":
                 return (
-                  <ul className="nav headerNav nav-pills nav-justified profileNav">
+                  <ul className="nav headerNav nav-pills nav-justified profileNav  ml-auto">
                   <NavListItem path="/personalAccount" menuLabel="Account"  className ="nav-item"/>
                   <NavListItem path="/hostevents" menuLabel="HostEvent"  className ="nav-item"  />
                   <NavSearchForm />
