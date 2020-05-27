@@ -39,12 +39,10 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 //passport Config
-//require("./config/passport")(passport);
 
 //Routes 
 app.use("/api/images",upload);
 app.use(routes);
-// app.use("/", routes)
 
 // Send every other request to the React app Define any API routes before this runs
 app.get("*", (req, res) => {
