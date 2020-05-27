@@ -20,10 +20,12 @@
   /* font-family: 'Arvo', serif; */
   font-size: 17px;
 }
+.participationThumbnail{
+  width:250px;
+}
 
-
-  img{
+.personalGalleryImg{
     max-width:100%;
-    /* margin:10px;
-    padding:20px; */
+    margin:10px;
+    padding:20px;
   }

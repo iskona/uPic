@@ -42,7 +42,7 @@ function ContestForm() {
                         <label htmlFor="title" className="col-sm-2 col-form-label">Title</label>
                         <div className="col-sm-10 ">
                             <input type="text"
-                                className="form-control"
+                                className="form-control contestTextArea "
                                 placeholder="Contest Title"
                                 ref={titleRef}
                             />
@@ -60,7 +60,7 @@ function ContestForm() {
                     <div className="form-group row contestFormInput">
                         <label htmlFor="description" className="col-sm-2 col-form-label">Category</label>
                         <div className="col-sm-10 ">
-                            <select className="form-control" ref={categoryRef}>
+                            <select className="form-control contestTextArea" ref={categoryRef}>
                                 {categoriesList.map(item => {
                                     return <option key={item + "2"}>{item}</option>
                                 })}
@@ -72,7 +72,7 @@ function ContestForm() {
                         <label htmlFor="endDate" className="col-sm-2 col-form-label">Due Date</label>
                         <div className="col-sm-10 ">
                             <input type="date"
-                                className="form-control"
+                                className="form-control contestTextArea"
                                 placeholder="Tell us something about the contest"
                                 ref={dueDate}
                             />

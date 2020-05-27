@@ -1,5 +1,5 @@
     .contestFormMainDiv{
-        background: #161415 url(../Style/Img/blur-background-og.jpg)no-repeat top center;
+        background: #161415 url(../Style/Img/10.jpg)no-repeat top center;
         background-size: cover;
         height: 150vh;
         margin-top:0px;
@@ -11,16 +11,19 @@
         width:750px;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
         border-radius: 8px;
-        margin-top:20px;
+        margin-top:25px;
+        background: rgba(204, 204, 204, 0.5);
         /* opacity: ; */
     }
     .contestFormDiv .form-group{
         width: 800px;
         margin-left:60px;
-        margin-top:20px;
+        margin-top:15px;
+     
     }
     .contestTextArea{
         margin-left: 0px;
+        border-radius: 10px;
     }
     .contestDetailsDiv h3{
         margin :15px;
@@ -45,6 +48,7 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
     border-radius: 8px;
     margin-top:20px;
+    
     }
     .contestUpdateDetailsDiv h3{
         margin:10px;

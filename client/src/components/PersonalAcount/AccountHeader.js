@@ -11,7 +11,7 @@ function AccountHeader(props) {
                 <div className="banner-text">
                     <h1 className="responsive-headline respHeader"> {props.userData.name} </h1>
                     <p className = "text-center joiningText">
-                     <strong>  Joined On:  { `${joiningdate}`.substring(0,10) }</strong>  
+                     Joined On:  { `${joiningdate}`.substring(0,10) }
                     </p>
                 </div>
             </div>

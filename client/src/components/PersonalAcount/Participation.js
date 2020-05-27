@@ -36,7 +36,7 @@ function Participation() {
                                         <td  className="align-middle">{item.Contest[0].startdate.substring(0, 10)}  </td>
                                         <td  className="align-middle">{item.Contest[0].status}  </td>
                                         <td  className="align-middle" >
-                                           <a href = {item.imageUrl}  target = "_blank"> <img src = {item.thumbnailUrl}  /> </a>
+                                           <a href = {item.imageUrl}   target = "_blank"> <img  classname ="participationThumbnail" src = {item.thumbnailUrl}  /> </a>
                                             </td>
                                     </tr>
                                 )) : (<tr><td></td><td>No result to display</td></tr>)}

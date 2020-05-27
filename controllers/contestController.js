@@ -4,7 +4,7 @@ const notification = require("../config/notification");
 // Defining methods for the contestsController
 module.exports = {
     findAllOpenContests: function (req, res) {
-        db.Contest.find({status:"open"})
+        db.Contest.find({status:"Open"})
             .then(data => {
                 res.json(data);
             })

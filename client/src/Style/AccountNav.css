@@ -11,8 +11,8 @@
     width:75%;
     margin:0 auto;
 }
-.headerNav li {
-    /* padding-bottom :20px; */
+.headerNavItem{
+    padding-bottom :20px;
     cursor:pointer;
     margin:0 auto;  
     font: 15px 'opensans-bold', sans-serif;

@@ -10,7 +10,7 @@
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && npm install && npm run build" 
   },
   "author": "",
   "license": "ISC",
@@ -41,7 +41,11 @@
     "react": "^16.13.1",
     "react-activity-feed": "^0.10.2",
     "react-addons-update": "^15.6.2",
+<<<<<<< HEAD
+=======
     "react-background-slideshow": "^1.0.4",
+    "react-infinite-scroller": "^1.2.4",
+>>>>>>> Styling Chnages
     "react-masonry-component": "^6.2.1",
     "react-notifications": "^1.6.0",
     "react-responsive-carousel": "^3.2.7",
