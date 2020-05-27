@@ -61,7 +61,7 @@ function Navbar() {
           aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo02"></div>
+        <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
 
         {
           (() => {
@@ -82,7 +82,7 @@ function Navbar() {
               case "/hostevents":
               case "/search":
                 return (
-                  <ul className="nav headerNav nav-pills nav-justified profileNav">
+                  <ul className="nav headerNav nav-pills nav-justified profileNav ml-auto">
                     <NavListItem path="/personalAccount" menuLabel="Account"  className ="nav-item"/>
                     <NavListItem path="/hostevents" menuLabel="HostEvent"  className ="nav-item"  />
                     <NavListItem path="/contests" menuLabel="Contests"  className ="nav-item"/>
@@ -95,7 +95,7 @@ function Navbar() {
                 )
               case "/contests":
                 return (
-                  <ul className="nav headerNav nav-pills nav-justified profileNav">
+                  <ul className="nav headerNav nav-pills nav-justified profileNav ml-auto">
                   <NavListItem path="/personalAccount" menuLabel="Account"  className ="nav-item"/>
                   <NavListItem path="/hostevents" menuLabel="HostEvent"  className ="nav-item"  />
                   <NavSearchForm />
@@ -110,6 +110,7 @@ function Navbar() {
             }
           })
             ()}
+      </div>
       </div>
     </nav>);
 

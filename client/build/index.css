@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+    
+.banner{
+    position: relative;
+    height: 250px;
+    /* min-height:300px; */
+    width: 100%;
+    background: #161415 url(../Images/sarah-andesner-3.jpg)no-repeat top center;
+    background-size: cover !important;
+    -webkit-background-size: cover !important;
+    text-align: center;
+    overflow: hidden;
+    color : white;
+}
+
+.mainBg {
+    font-family: 'Poppins', sans-serif;
+    /* background-image: url("../Images/11.jpg"); */
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-size: cover;
+    padding-top: 7rem;
+}
