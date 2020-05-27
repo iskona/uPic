@@ -82,7 +82,7 @@ function UpdateContestForm(props) {
                         var ratingsArr = [];
                         for (let i = 0; i < distinct.length; i++) {
                             var eachImage = images.filter(function (image) {
-                                return image.image_id == distinct[i];
+                                return image.image_id === distinct[i];
                             });
                             //find the average of all the ratings
                             var sum_rating = 0;

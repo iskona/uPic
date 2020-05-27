@@ -20,7 +20,7 @@ function Participation() {
                 <div className="personalImageDiv"></div>
                     {personalImages.map(item => {
                         return (<div class="col-1-4">
-                        <img src={item.imageUrl}/>
+                        <img src={item.imageUrl} alt=""/>
                       </div>)
 
 

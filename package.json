@@ -10,7 +10,7 @@
     "client": "cd client && npm run start",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "cd client && npm install && npm run build" 
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
@@ -50,6 +50,7 @@
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
     "tinify": "^1.6.0-beta.2",
+    "unsplash-js": "^6.0.0",
     "uuid": "^8.1.0",
     "validator": "^13.0.0"
   }
