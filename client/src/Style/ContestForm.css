@@ -1,32 +1,75 @@
-.contestDetailsDiv{
-    width:780px;
-    margin:0 auto;
-    border-style: outset;
-    height: auto;
-    margin-top :50px;
-}
-@media only screen and (max-width: 400px) {
-    .contestDetailsDiv {
-        width:100%;
+    .contestFormMainDiv{
+        background: #161415 url(../Style/Img/10.jpg)no-repeat top center;
+        background-size: cover;
+        height: 150vh;
+        margin-top:0px;
     }
-  }
-.contestFormDiv .form-group{
-
-    width: 800px;
-   margin-left:60px;
-    margin-top:20px;
- 
-}
-.contestDetailsDiv h3{
-    margin :15px;
-}
-.contestFormDiv .form-control{
-    width:60%;
-    margin-bottom:20px ;
-}
-.contestSaveButton{
-    background-color: green;
-    padding:5px;
+    .contestDetailsDiv{
+        background-color: white;
+        border-style: outset;
+        margin:0 auto;
+        width:750px;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+        border-radius: 8px;
+        margin-top:25px;
+        background: rgba(204, 204, 204, 0.5);
+        /* opacity: ; */
+    }
+    .contestFormDiv .form-group{
+        width: 800px;
+        margin-left:60px;
+        margin-top:15px;
+     
+    }
+    .contestTextArea{
+        margin-left: 0px;
+        border-radius: 10px;
+    }
+    .contestDetailsDiv h3{
+        margin :15px;
+    }
+    .contestFormDiv .form-control{
+        width:60%;
+        margin-bottom:20px ;
+    }
+    .contestSaveButton{
+        background-color: #2E8B57;
+        padding:5px;
+        margin:0 auto;
+        font-weight:bold;
+        margin-bottom:30px;
+    }
+    /* Update form styling */
+    .contestUpdateDetailsDiv{
+    background-color: white;
+    border-style: outset;
     margin:0 auto;
-}
+    width:700px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    border-radius: 8px;
+    margin-top:20px;
+    
+    }
+    .contestUpdateDetailsDiv h3{
+        margin:10px;
+        padding:8px;
+        font-size:20px;
+    }
+    .UpdateFormDiv .form-group{
+        width:75%;
+        margin:0 auto;
+        margin-top:5px;
+        margin-bottom:15px;
+        border-radius: 10px;
+    }
+    .updateLabel{
+        /* float:left; */
+        padding:10px;
+        /* margin-right:5px; */
+    }
 
+    @media only screen and (max-width: 500px) {
+    .contestUpdateDetailsDiv,.contestDetailsDiv,.UpdateFormDiv .form-group {
+            width:100%;
+        }
+    }

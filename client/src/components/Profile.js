@@ -6,7 +6,6 @@ import Unsplash, { toJson } from 'unsplash-js';
 function Profile() {
 
     const [images, setImages] = useState([]);
-    // const unsplash = new Unsplash({ accessKey: "5DMWN47D_QB7GWHov8gtgQqXcz_-lnkLF4NC7hYPjFM" });
     const unsplash = new Unsplash({ accessKey: process.env.REACT_APP_Unsplash_Key });
     const categories = ["nature","pets","wildlife","food","family","world","water","sports","random"];
     var index = Math.floor(Math.random() * categories.length) + 1;

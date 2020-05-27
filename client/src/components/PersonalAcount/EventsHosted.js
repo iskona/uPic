@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import API from "../../utils/API";
-// import { v4 as uuidv4 } from 'uuid';
+import "../../Style/EventsHosted.css";
 import update from 'react-addons-update';
 import UpdateContestForm from "./updateContestForm";
 
@@ -37,22 +37,22 @@ function EventsHosted() {
         console.log(childevent);
 
         setContestDetails(update(constestDetails,{
-           
-                [index]: {
-                    $set: childevent
-                
-            }
+           [index]: {
+                $set: childevent
+             }
         }));
     }
-
     return (
+        <section className = "maneDiv">
         <div>
+           
+         <br></br>
             {contestform ? <UpdateContestForm
                 id={detail}
                 setDescriptionDetails={setDescriptionDetails}
             /> : (
-                    <div className="container mt-5">
-                        <table className="table  table-hover table-condensed">
+                    <div className="container tabelDiv mt-5">
+                        <table className="table  table-hover hostEventTable table-condensed">
                             {/* <p>{constestDetails.title}</p> */}
                             <thead className="thead">
                                 <tr>
@@ -68,7 +68,7 @@ function EventsHosted() {
                                         <td data-th="Name" className="name-cell align-middle">{item.title} </td>
                                         <td data-th="Email" className="align-middle" >{item.startdate.substring(0, 10)}</td>
                                         <td data-th="Phone" className="align-middle">{item.status}  </td>
-                                       <td>{item.status === "open" &&  <button custom-attribute={item.id} onClick={handlHideShow} >
+                                       <td>{item.status === "Open" &&  <button custom-attribute={item.id} onClick={handlHideShow} >
                                             <i custom-attribute={item.id} className="fa fa-pencil" aria-hidden="true"></i>
                                         </button> }</td> 
                                        
@@ -80,8 +80,10 @@ function EventsHosted() {
 
                     </div>
                 )}
-
-        </div>
+                    </div>
+   </section>
+    
+     
     )
 }
 export default EventsHosted;

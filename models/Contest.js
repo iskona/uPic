@@ -28,7 +28,7 @@ const ContestSchema = new Schema({
     },
     status : {
         type: String,
-        default: "open"
+        default: "Open"
     },
     id :{ 
         type: String,

@@ -27,14 +27,7 @@ const ImageSchema = new Schema({
     rating:{
         type:Number,
         default:0
-    }
-    /*
-    owner
-    contest_id
-    s3Url
-
-    */
-
-});
+    },
+    });
 
 module.exports = Image = mongoose.model("image",ImageSchema);

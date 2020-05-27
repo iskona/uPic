@@ -88,8 +88,10 @@ function Navbar() {
                     <NavListItem path="/contests" menuLabel="Contests"  className ="nav-item"/>
                     <NavSearchForm />
                     {/* <NavListItem path="/notification" menuLabel="HostEvent"  className ="nav-item"  /> */}
+                    <li onClick = {initNotifications} className="nav-item active"><h5>
+                      <i className="fas fa-bell mt-4" style ={{color:"white"}} /></h5></li> 
                     <NavListItem path="/" menuLabel="Logout"  className ="nav-item" onClick ={handleLogout}/>
-                    <li onClick = {initNotifications} className="nav-item active"><h6><i className="fa fa-bell" /></h6></li> 
+                    
                     <NotificationContainer/>
                   </ul>
                 )
@@ -100,7 +102,9 @@ function Navbar() {
                   <NavListItem path="/hostevents" menuLabel="HostEvent"  className ="nav-item"  />
                   <NavSearchForm />
                   <NotificationContainer/>
-                  <li onClick = {initNotifications}  className="nav-item active"><h6><i className="fa fa-bell pt-3"/></h6></li> 
+                  <li onClick = {initNotifications}  className="nav-item active">
+                    <h5><i class="fas fa-bell mt-4" style ={{color:"white"}}></i></h5>
+                    </li> 
 
                   <NavListItem path="/" menuLabel="Logout"  className ="nav-item" onClick ={handleLogout}/>
                 </ul>

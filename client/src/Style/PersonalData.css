@@ -1,11 +1,40 @@
+
+.maneDiv{
+    background-color: #f3f5f6;
+    margin-top:0px;
+    /* margin-bottom */
+
+}
+
+@media only screen and ( max-width: 500px) {
+    .personalDetailsDiv {
+        width:100%;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    .personalGalleryImg {
+        width:500px;
+        float:left;
+    }
+  }
+  .personalGalleryImg{
+  width: 250px;
+}
+  
 .personalDetailsDiv{
+    background-color: white;
     width:870px;
     margin:0 auto;
     border-style: outset;
-    height:600px;
-    margin-top :50px;
+    height: auto;
+    overflow: hidden;
+    margin-top :20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+    
 }
-.description,.nameDiv,.galleryDiv{
+.description,.nameDiv{
 
     border-bottom: 1px solid #e3e3e3;
     margin:0 auto;
@@ -19,6 +48,16 @@
     overflow: hidden;
     position: relative;
 }
+#h5Div{
+    text-align:left;
+    margin-top:10px; 
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 20px;
+    font-size :20px;
+    color:grey;
+}
+
 .descriptionBox{
     margin-top:30px;
     margin-bottom:20px;

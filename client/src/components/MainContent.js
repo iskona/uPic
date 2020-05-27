@@ -42,13 +42,13 @@ function MainContent() {
     <div className="mainBg" style={bgStyle}>
       {isMainPage &&
         <div className="container homepageDiv mx-auto" style={{ color: "rgb(233,236,239)", height: "100vh" }}>
-          <Title title="Find your Inspiration" displaySize="4" />
-          <Title title="Join uPic Community to start a new Photo Contest or to get involved" displaySize="7" />
+          <Title title="Get Inspired. Get Involved." displaySize="4" />
+          <Title title="Join uPic Community to start a new Photo Contest." displaySize="7" />
           <br></br>
           <p className=" row lead">
             <button className="btn btn-secondary btn-lg homePageButton"
               onClick={showSignUpPage}>
-              Start for Free
+              Join
             </button>
           </p>
         </div>}
