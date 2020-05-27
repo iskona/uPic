@@ -32,6 +32,9 @@ export default {
         return axios.get("api/images/getImages/"+contestId);
     },
 
+    // getContestImageDetails : function(){
+    //     return axios.get("/api/images/personalAccount");
+    // },
     getPersonalImages : function(){
         return axios.get("/api/images/personalAccount");
     },

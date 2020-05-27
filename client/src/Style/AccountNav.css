@@ -4,19 +4,16 @@
 .accountNavBarDiv {
     background-color: white;
     width:100%;
+    margin-top:15px;
     border-bottom: 1px solid #e3e3e3;
 }
 .accountNavBar{
     width:75%;
     margin:0 auto;
 }
-.headerNav li {
-  
-    /* padding-bottom :20px; */
+.headerNavItem{
+    padding-bottom :20px;
     cursor:pointer;
     margin:0 auto;  
     font: 15px 'opensans-bold', sans-serif;
-}
-.accountNavBar li{
-    margin-top:15px;
 }

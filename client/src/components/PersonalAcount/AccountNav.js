@@ -8,7 +8,7 @@ import "../../Style/AccountNav.css"
 function AccountNav(props) {
 
     var userInfo = props.userData
-    const [renderComponent, setRenderComponent] = useState("");
+    const [renderComponent, setRenderComponent] = useState("personalData");
 
     const handleClick = (componentName) => {
         setRenderComponent(componentName);
@@ -31,9 +31,9 @@ function AccountNav(props) {
         <div className="headerNavBar">
             <div className="accountNavBarDiv">
                 <ul className="nav headerNav nav-pills nav-justified accountNavBar">
-                    <li className="nav-item " onClick={() => handleClick('personalData')}>PersonalData</li>
-                    <li className="nav-item text-muted" onClick={() => handleClick('eventsHosted')}>Events-Hosted</li>
-                    <li className="nav-item text-muted" onClick={() => handleClick('participation')}>Participations</li>
+                    <li className="nav-item headerNavItem" onClick={() => handleClick('personalData')}>PersonalData</li>
+                    <li className="nav-item headerNavItem" onClick={() => handleClick('eventsHosted')}>Events-Hosted</li>
+                    <li className="nav-item headerNavItem" onClick={() => handleClick('participation')}>Participations</li>
                 </ul>
             </div>
             <div className="personalContent">
