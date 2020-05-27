@@ -45,11 +45,26 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     getImagesUploadedByUser : function(req,res) {
-        db.Image.find({
-            owner : req.user.email
-        }).then(result => {
-            res.json(result)
-        }).catch(err => console.log(err))
+        db.Image.aggregate([
+            { $match: { owner: { $eq: req.user.email } } },
+            {
+                "$project": {
+                    "contestId": {
+                        "$toObjectId": "$contestId"
+                    },
+		            "thumbnailUrl":{"$toString": "$thumbnailUrl"},
+		            "imageUrl":{"$toString": "$imageUrl"}
+                }
+            },
+            {
+                $lookup: {
+                    from : "contests",
+                    localField :"contestId",
+                    foreignField : "_id",
+                    as : "Contest"
+                }
+            }
+        ]).then(data => res.json(data));
     },
     getImageRating: function (req, res) {
         console.log(req.params.img_id + "  " + req.params.contest_id + "  " + req.params.user);

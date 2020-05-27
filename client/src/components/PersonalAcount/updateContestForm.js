@@ -93,7 +93,7 @@ function UpdateContestForm(props) {
 
                             console.log('==== avg rating of ' + distinct[i] + " is " + Math.floor(avg_rating));
                             var imagekey = distinct[i], ratingVal = Math.floor(avg_rating);
-                            var obj={};
+                            var obj = {};
                             obj[imagekey] = ratingVal;
                             ratingsArr.push(obj);
                         }
@@ -103,7 +103,7 @@ function UpdateContestForm(props) {
                             ratingsArr: ratingsArr,
                             owner: localStorage.getItem("email")
                         }
-            
+
                         API.updateAverageRating(contestRatings)
                             .then(dbResponse => console.log(dbResponse))
                             .catch(err => console.log(err));
@@ -114,12 +114,13 @@ function UpdateContestForm(props) {
     }
     return (
         <React.Fragment>
-            <div className="contestDetailsDiv">
-                <h3 className="form-title text-center">Contest Details</h3>
+            <div className="contestUpdateDetailsDiv">
+                <h3 className="form-title text-center">Update Contest</h3>
                 <hr></hr>
-                <form className="contestFormDiv">
+                <br></br>
+                <form className="UpdateFormDiv">
                     <div className="form-group row justify-content-center contestFormInput">
-                        <label htmlFor="title" className="col-sm-2 col-form-label">Title</label>
+                        <label htmlFor="title" className="col-sm-2 col-form-label updateLabel">Title</label>
                         <div className="col-sm-10 ">
                             <input type="text"
                                 name="title"
@@ -131,19 +132,26 @@ function UpdateContestForm(props) {
                         </div>
                     </div>
                     <div className="form-group row contestFormInput">
-                        <label htmlFor="description" className="col-sm-2 col-form-label">Description</label>
+                        <label htmlFor="description" className="col-sm-2 col-form-label updateLabel">Description</label>
                         <div className="col-sm-10 ">
-                            <input type="text"
+                            {/* <input type="text"
                                 name="description"
                                 value={state.description}
                                 onChange={handleChange}
                                 className="form-control"
                                 placeholder="Tell us something about the contest"
-                            />
+                            /> */}
+
+                            <textarea className="form-control" rows="3"
+                                name="textarea" value={state.description}
+                                onChange={handleChange}
+                                placeholder="Tell us something about the contest"
+                                name="description">
+                            </textarea>
                         </div>
                     </div>
                     <div className="form-group row contestFormInput">
-                        <label htmlFor="description" className="col-sm-2 col-form-label">Category</label>
+                        <label htmlFor="description" className="col-sm-2 col-form-label updateLabel">Category</label>
                         <div className="col-sm-10 ">
                             <select className="form-control" name="category"
                                 value={state.category}
@@ -157,7 +165,7 @@ function UpdateContestForm(props) {
                         </div>
                     </div>
                     <div className="form-group row contestFormInput">
-                        <label htmlFor="endDate" className="col-sm-2 col-form-label">Due Date</label>
+                        <label htmlFor="endDate" className="col-sm-2 col-form-label updateLabel">DueDate</label>
                         <div className="col-sm-10 ">
                             <input type="date"
                                 name="duedate"
@@ -169,7 +177,7 @@ function UpdateContestForm(props) {
                         </div>
                     </div>
                     <div className="form-group row contestFormInput">
-                        <label htmlFor="description" className="col-sm-2 col-form-label">Status</label>
+                        <label htmlFor="description" className="col-sm-2 col-form-label updateLabel">Status</label>
                         <div className="col-sm-10 ">
                             <select className="form-control" name="status"
                                 value={state.status}

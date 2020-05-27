@@ -1,20 +1,27 @@
-.participationDiv{
-    width:800px;
-    margin:0 auto;
+
+.participationTable{
+  border: 1px solid #e3e3e3;;
+  width:85%;
+  background-color: white;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+}
+.participationTable .thead{
+  border-bottom: 1.5px solid #778899;
+}
+.participationTable th{
+    background-color:#DCDCDC;
+    margin :20px;
+    padding:20px;
 
 }
-.imageDiv{
-    display:inline-block;
-    /* overflow: hidden; */
-    width: 350px;
-    height:300px;
-    border:1px solid;
+.participationTable td{
+  /* font-family: 'Arvo', serif; */
+  font-size: 17px;
 }
-.col-1-4{
-    width:50%;
-    float:left;
-    /* display:inline-block; */
-  }
+
+
   img{
     max-width:100%;
     /* margin:10px;

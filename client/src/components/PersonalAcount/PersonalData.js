@@ -1,24 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../Style/PersonalData.css";
 import AdditionalInfo from "./AdditionalInfo";
-
+import Masonry from 'react-masonry-component';
+import { masonryOptions } from "../ImageMasonryComponent";
+import API from "../../utils/API";
+import { Link } from 'react-router-dom';
 
 
 function PersonalData(props) {
     console.log(props)
     const [InfoComponent, setInfoComponent] = useState(false);
     const [userDescription, setComponenetUserInfo] = useState(props.userInfo.description || "Tell us something about yourself");
+    const [galleryImage, setGalleryImage] = useState([]);
+
     const showInfoComponent = () => {
         setInfoComponent(!InfoComponent);
     }
 
+    useEffect(() => {
+        API.getPersonalImages().then(result => {
+            console.log(result.data);
+            setGalleryImage(result.data);
+        })
+    }, [])
+
     const setDescription = (description) => {
-        setComponenetUserInfo(description);
+        setComponenetUserInfo(description); 
         setInfoComponent(false);
     }
 
     return (
-        <div className="personalDetailsDiv">
+        <section className = "maneDiv">
+         <br></br>
+        <div className="personalDetailsDiv col-12">
             <div className="description desc-empty">
                 {!InfoComponent && <i className=" descriptionBox empty-description-handler">{userDescription}</i>}
                 {InfoComponent && <AdditionalInfo setDescription={setDescription} Desc={userDescription} />}
@@ -40,10 +54,37 @@ function PersonalData(props) {
                 </div>
 
             </div>
-            <div className = "galleryDiv">
-                <p>Gallery </p>
+            <div className="galleryDiv">
+                <h6 id = "h5Div">Gallery</h6>
+                <br></br>
+                <Masonry  
+                className={"grid"}
+                elementType={"div"}
+                options={masonryOptions}
+                disableImagesLoaded={false}
+                updateOnEachImageLoad={false} >
+
+                {galleryImage.map((img ,i) =>{
+                  return(
+                    <div key={i}>
+                    <img
+                        className="personalGalleryImg"
+                        src={img.thumbnailUrl}
+
+                        alt="Contest images" />
+                    
+                </div>
+                
+                  ) 
+            
+        }
+        )}
+         
+                </Masonry>
             </div>
         </div>
+        </section>
+
     )
 
 }

@@ -9,7 +9,7 @@ function AccountHeader(props) {
         <React.Fragment>
             <div className="row banner">
                 <div className="banner-text">
-                    <h1 className="responsive-headline"> {props.userData.name} </h1>
+                    <h1 className="responsive-headline respHeader"> {props.userData.name} </h1>
                     <p className = "text-center joiningText">
                      <strong>  Joined On:  { `${joiningdate}`.substring(0,10) }</strong>  
                     </p>
