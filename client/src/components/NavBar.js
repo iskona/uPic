@@ -103,7 +103,7 @@ function Navbar() {
                   <NavSearchForm />
                   <NotificationContainer/>
                   <li onClick = {initNotifications}  className="nav-item active">
-                    <h5><i class="fas fa-bell mt-4" style ={{color:"white"}}></i></h5>
+                    <h5><i className="fas fa-bell mt-4" style ={{color:"white"}}></i></h5>
                     </li> 
 
                   <NavListItem path="/" menuLabel="Logout"  className ="nav-item" onClick ={handleLogout}/>
