@@ -26,13 +26,13 @@ if (process.env.NODE_ENV === "production") {
 
 
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/photocontestdb", { useNewUrlParser: true })
-  .then(() => console.log("Mongo Db successfully connected "))
-  .catch(err => console.log(err));
-
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://photosdb:password1@ds041546.mlab.com:41546/heroku_l1n7xq0g", { useNewUrlParser: true })
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/photocontestdb", { useNewUrlParser: true })
 //   .then(() => console.log("Mongo Db successfully connected "))
 //   .catch(err => console.log(err));
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://photosdb:password1@ds041546.mlab.com:41546/heroku_l1n7xq0g", { useNewUrlParser: true })
+  .then(() => console.log("Mongo Db successfully connected "))
+  .catch(err => console.log(err));
 
 //Passport middleware 
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
