@@ -21,5 +21,5 @@ This is basically a Photo Contest Application that provides a user ability to st
 Front-end and back-end for photos uploading, Signup page, rating pictures, showing the pictures for every contest, searching for a particular contest category and showing image grid on user profile page. 
 * [Deepshikha](https://github.com/deepshikhasingh90)
 Personal details front-end and back-end, email sending and notification feature.
-* [Sofia](https://github.com/deepshikhasingh90)
+* [Sofia](https://github.com/iskona)
 Homepage, Login and Contest List pages, contest model, bg images.
