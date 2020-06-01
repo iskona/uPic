@@ -2,6 +2,8 @@ const db = require("../models");
 const aws = require('aws-sdk');
 const multer = require('multer');
 const path = require('path');
+const mongoose = require("mongoose");
+//import mongoose from 'mongoose';
 require('dotenv').config();
 
 //defining methods for the imagesController
@@ -45,26 +47,36 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     getImagesUploadedByUser : function(req,res) {
-        db.Image.aggregate([
-            { $match: { owner: { $eq: req.user.email } } },
+        //list all images
+        if(!req.user|| !req.user.email)
+        {
+            return res.status(400).send({ email: "User Does not exists." });
+        }
+        
+        db.Image.find({ owner :req.user.email})
+        .then (images => {
+            var promises = [];
+            images.forEach(image => {
+                var promise = db.Contest.findById(image.contestId).then((contest) => {
+                    return {image: image, contest: contest}
+                })
+                promises.push(promise);
+            });
+            return Promise.all(promises);
+        })
+        .then((values) => {
+            var userContests = [];
+            values.forEach(value => {
+                userContests.push(value)
+            })
+
+            return res.json(userContests)
+        })
+        .catch(err => 
             {
-                "$project": {
-                    "contestId": {
-                        "$toObjectId": "$contestId"
-                    },
-		            "thumbnailUrl":{"$toString": "$thumbnailUrl"},
-		            "imageUrl":{"$toString": "$imageUrl"}
-                }
-            },
-            {
-                $lookup: {
-                    from : "contests",
-                    localField :"contestId",
-                    foreignField : "_id",
-                    as : "Contest"
-                }
-            }
-        ]).then(data => res.json(data));
+                console.log(err);
+                res.status(500).json(err)
+            })
     },
     getImageRating: function (req, res) {
         console.log(req.params.img_id + "  " + req.params.contest_id + "  " + req.params.user);
