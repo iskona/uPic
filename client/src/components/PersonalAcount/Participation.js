@@ -31,12 +31,12 @@ function Participation() {
                             </thead>
                             <tbody>
                                 {participationDetails.length ? participationDetails.map(item => (
-                                    <tr key={item.contestId}>
-                                        <td  className="name-cell align-middle">{item.Contest[0].title} </td>
-                                        <td  className="align-middle">{item.Contest[0].startdate.substring(0, 10)}  </td>
-                                        <td  className="align-middle">{item.Contest[0].status}  </td>
+                                    <tr key={item.image.contestId}>
+                                        <td  className="name-cell align-middle">{item.contest.title} </td>
+                                        <td  className="align-middle">{item.contest.startdate.substring(0, 10)}  </td>
+                                        <td  className="align-middle">{item.contest.status}  </td>
                                         <td  className="align-middle" >
-                                           <a href = {item.imageUrl}   target = "_blank"> <img  classname ="participationThumbnail" src = {item.thumbnailUrl}  /> </a>
+                                           <a href = {item.image.imageUrl}   target = "_blank"> <img  classname ="participationThumbnail" src = {item.image.thumbnailUrl}  /> </a>
                                             </td>
                                     </tr>
                                 )) : (<tr><td></td><td>No result to display</td></tr>)}

@@ -69,8 +69,7 @@ function PersonalData(props) {
                     <div key={i}>
                     <img
                         className="personalGalleryImg"
-                        src={img.thumbnailUrl}
-
+                        src={img.image.thumbnailUrl}
                         alt="Contest images" />
                     
                 </div>
