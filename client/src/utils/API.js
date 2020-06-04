@@ -45,6 +45,7 @@ export default {
     //Contest Api
 
     createContestDetails : function(userDetails) {
+        console.log(userDetails)
         return axios.post("/api/contests/hostevents",userDetails);
     },
     getOpenContests: function() {
@@ -80,6 +81,7 @@ export default {
         return axios.put("/api/images/setAvgRating",contestRatings);
     },
     searchContests: function(category){
+        console.log(category);
         return axios.get("/api/contests/searchforAcategory/"+category);
     }
 }

@@ -104,6 +104,7 @@ patch: function(req,res){
         }
     },
     searchforAcategory: function(req, res){
+        console.log(req.params.category)
         db.Contest
             .find({category:req.params.category})
             .then(dbContests => res.json(dbContests))
