@@ -13,7 +13,8 @@ function Login() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const bgStyle = {
-        backgroundImage: "url(" + Img + ")"
+        backgroundImage: "url(" + Img + ")",
+        height:"100vh"
     };
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -37,6 +38,7 @@ function Login() {
 
     return (
         <div className="bgCover" style={bgStyle}>
+                    {error && <ShowError message={error} page="login"/>}
             {!loggedIn &&
                 <div className="container p-5 loginDiv">
                     <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center" >
@@ -69,7 +71,7 @@ function Login() {
                 state: { email: `${loggedIn.user}` }
             }}
             />)}
-                        {error && <ShowError message={error} page="login"/>}
+                
 
         </div>
     )

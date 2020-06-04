@@ -39,7 +39,7 @@ function ContestContent({contest, contestDetails, buttonLabel}) {
             srcValue="/Images/documentary.png";
             break;
         case 'weather':
-            srcValue="/Images/portrait.png";
+            srcValue="/Images/weather.png";
             break;
         case 'architectural':
             srcValue="/Images/architecture.png";
