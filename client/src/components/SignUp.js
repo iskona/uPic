@@ -5,7 +5,7 @@ import "../Style/LogInSignUp.css";
 import Title from './Title';
 import Img from '../Style/Img/6.jpg';
 import ShowError from "./ShowError";
-import "../Style/Events.css";
+
 
 function SignUp() {
     const [loggedIn, setloggedIn] = useState({
