@@ -4,9 +4,12 @@ import { Redirect } from "react-router-dom";
 import Title from './Title';
 import Img from '../Style/Img/7.jpg';
 import "../Style/LogInSignUp.css";
+import ShowError from "./ShowError";
 
 function Login() {
     const [loggedIn, setloggedIn] = useState(false);
+    const [error,setError] = useState();
+
     const emailRef = useRef();
     const passwordRef = useRef();
     const bgStyle = {
@@ -22,7 +25,14 @@ function Login() {
                 console.log(result.data.email);
                 localStorage.setItem("email", result.data.email);
                 setloggedIn(true);
-            });
+            })
+            .catch(err=> {
+                console.log(err.response);
+                if(err.response.data){
+                    console.log(err.response.data)
+                    setError("Please Provide Valid Credentials !!")
+                }
+            })
     }
 
     return (
@@ -59,6 +69,8 @@ function Login() {
                 state: { email: `${loggedIn.user}` }
             }}
             />)}
+                        {error && <ShowError message={error} page="login"/>}
+
         </div>
     )
 };

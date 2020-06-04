@@ -4,12 +4,14 @@ import { Redirect } from "react-router-dom";
 import "../Style/LogInSignUp.css";
 import Title from './Title';
 import Img from '../Style/Img/6.jpg';
+import ShowError from "./ShowError";
 
 function SignUp() {
     const [loggedIn, setloggedIn] = useState({
         signedin: false,
         user: ""
     });
+    const [error,setError] = useState();
 
     const nameRef = useRef();
     const emailRef = useRef();
@@ -34,6 +36,26 @@ function SignUp() {
                     signedin: true,
                     user: result.data.email
                 });
+            })
+            .catch(err => {
+                console.log('catch block')
+                console.log(err.response.data)
+
+                if (err.response.data.email) {
+                    console.log('Error with Email')
+                    setError(err.response.data.email);
+                }
+                else if (err.response.data.password) {
+                    console.log('Error with Password')
+                    setError(err.response.data.password);
+                }
+                else if (err.response.data.password2) {
+                    console.log('Error with Password')
+                    setError(err.response.data.password2);
+                } else if (err.response.data.name) {
+                    console.log('Error with Name')
+                    setError(err.response.data.name);
+                }
             });
     }
 
@@ -82,6 +104,7 @@ function SignUp() {
                 }}
                 />)
             }
+            {error && <ShowError message={error} page="signup" />}
         </div>
     )
 };
