@@ -5,6 +5,7 @@ import "../Style/LogInSignUp.css";
 import Title from './Title';
 import Img from '../Style/Img/6.jpg';
 import ShowError from "./ShowError";
+import "../Style/Events.css";
 
 function SignUp() {
     const [loggedIn, setloggedIn] = useState({
@@ -61,7 +62,7 @@ function SignUp() {
 
     return (
         <div className="bgCover" style={bgStyle}>
-
+ {error && <ShowError message={error} page="signup" />}
             {!loggedIn.signedin ?
                 (<div className="container p-5 signUpDiv">
                     <div className="jumbotron mt-5 p-5 w-50 mx-auto justify-content-center">
@@ -104,7 +105,7 @@ function SignUp() {
                 }}
                 />)
             }
-            {error && <ShowError message={error} page="signup" />}
+           
         </div>
     )
 };
