@@ -68,6 +68,12 @@ function Navbar() {
             switch (currentPath) {
               case "/":
               case "/about":
+                return (
+                  <ul className="navbar-nav ml-auto mt-2 mt-lg-0 ml-auto">
+                    <NavListItem path="/signup" menuLabel="SignUp" />
+                    <NavListItem path="/login" menuLabel="LogIn" />
+                  </ul>
+                );
               case "/login":
               case "/signup":
                 return (
